@@ -1,0 +1,1007 @@
+[
+  {
+    "id": "A1",
+    "category": "corporate-ethical",
+    "title": "Voluntary Renewable Energy Switch",
+    "action": "Procure 100% renewable energy for all operations at 5% cost premium, reducing carbon footprint by 60%.",
+    "context": "Medium manufacturing company. Currently on grid mix (mostly coal). Renewable PPA available at 5% premium. Would save $200k/year in 5 years. Employees have been asking for climate action.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 95,
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 85,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A2",
+    "category": "corporate-ethical",
+    "title": "Pay Equity Transparency",
+    "action": "Publish all salary bands and conduct a third-party pay equity audit, addressing any gaps found.",
+    "context": "50-person company. Current pay is market-competitive but no formal transparency. Some historical gender gaps suspected. CEO wants to lead with transparency.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 90,
+      "ethical-framework": 90,
+      "compliance": 80
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A3",
+    "category": "corporate-ethical",
+    "title": "Transition to Employee Ownership",
+    "action": "Convert 51% of company shares to an employee ownership trust over 3 years. Founder takes below-market payout. Employees get governance rights.",
+    "context": "Profitable 200-person company. Founder nearing retirement. Could sell to private equity for 3x more. Founder believes employees built the company. Employees are invested in the mission.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 90,
+      "conscious-leadership": 95,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A4",
+    "category": "corporate-ethical",
+    "title": "Supply Chain Human Rights Remediation",
+    "action": "Conduct full human rights audit across Tier 1-3 suppliers. Where issues found (wage gaps, safety issues), invest in remediation rather than cutting suppliers. Budget $500k/year for 3 years.",
+    "context": "Fashion brand, 50 suppliers across 12 countries. Previous spot audits found issues but no remediation program. Industry average is to cut problematic suppliers. Company wants to be different.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 70,
+      "fairness": 95,
+      "transparency": 90,
+      "conscious-leadership": 95,
+      "ethical-framework": 90,
+      "compliance": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A5",
+    "category": "corporate-ethical",
+    "title": "Full Product Ingredient Transparency",
+    "action": "Publish full ingredient lists, sourcing origins, and manufacturing processes for all products. Include environmental impact data and ethical ratings. Open-source the format for industry use.",
+    "context": "Consumer goods company. Competitors treat formulations as trade secrets. Customers are demanding transparency. Company has nothing to hide and believes openness builds trust.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 80,
+      "fairness": 90,
+      "transparency": 100,
+      "conscious-leadership": 90,
+      "ethical-framework": 95,
+      "compliance": 80
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A6",
+    "category": "corporate-ethical",
+    "title": "Community Profit Sharing",
+    "action": "Allocate 10% of annual profits to a community fund, managed by a local community board. Fund supports local education, environment, and small business grants.",
+    "context": "Regional business with deep community roots. 100 employees, mostly local. Town has struggled since a major employer left. Company sees community health as business health.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 85,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A7",
+    "category": "corporate-ethical",
+    "title": "Reject Fossil Fuel Contract on Principle",
+    "action": "Decline a $5M/year contract from an oil company for sustainability consulting. Contract would be 20% of revenue but contradicts the company's stated mission of 'accelerating the green transition.'",
+    "context": "Sustainability consultancy with 30 staff. The $5M contract would fund expansion and new hires. Company mission statement is explicit about climate action. Staff have expressed concerns.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 90,
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 95,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "A8",
+    "category": "corporate-ethical",
+    "title": "Above-Minimum Parental Leave",
+    "action": "Introduce 26 weeks paid parental leave for all parents (birth, adoption, surrogacy). Twice the legal minimum. Includes phased return option. Same policy regardless of gender.",
+    "context": "Mid-size company. Current policy meets legal minimum (12 weeks). Data shows retention improves with better leave. Market is competitive for talent. CEO believes family support is core to a thriving workplace.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 80,
+      "conscious-leadership": 90,
+      "ethical-framework": 85,
+      "compliance": 80
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "B1",
+    "category": "corporate-unethical",
+    "title": "Price Fixing Agreement",
+    "action": "Collude with three competitors to set minimum pricing across the industry, increasing margins by 15% at customer expense.",
+    "context": "Mature industry with 4 major players. Price competition has been eroding margins. Meeting arranged at industry conference to 'stabilise the market.' Legal counsel not informed.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "B2",
+    "category": "corporate-unethical",
+    "title": "Systematic Age Discrimination in Hiring",
+    "action": "Instruct HR to filter out all applicants over 50 to build a 'younger, fresher team.' No documentation of this policy. Verbal instruction only.",
+    "context": "Tech company. CEO believes younger workers are more adaptable. Many qualified older applicants are being rejected at screening. HR is uncomfortable.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "B3",
+    "category": "corporate-unethical",
+    "title": "Illegal Waste Dumping",
+    "action": "Dump industrial toxic waste in a developing country's waterways at night to avoid $2M/year in proper disposal costs. Local partner arranged.",
+    "context": "Manufacturing company. Proper disposal costs have been increasing. CEO approved verbal arrangement. No paper trail. Local community relies on the river for drinking water.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 5,
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 15,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "B4",
+    "category": "corporate-unethical",
+    "title": "Mandatory Arbitration for Harassment Claims",
+    "action": "Implement mandatory arbitration clause for all employees, preventing them from bringing harassment or discrimination claims to court. Non-disclosure required.",
+    "context": "Company has had 3 harassment complaints in 2 years. Legal team recommends arbitration. Current employees not consulted. Policy change buried in updated employment contract.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5,
+      "compliance": 10
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "B5",
+    "category": "corporate-unethical",
+    "title": "Quarterly Earnings Manipulation",
+    "action": "Delay recording Q4 expenses into Q1 to meet analyst earnings expectations. Technically within accounting grey area. $3M difference determines executive bonuses.",
+    "context": "Public company. Q4 results came in below guidance. CFO proposes 'timing adjustments.' Auditors not informed. Board unaware.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 10,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "C1",
+    "category": "corporate-borderline",
+    "title": "Offshore Customer Service",
+    "action": "Move customer service from local team to offshore call centre. Saves 40%. Quality expected to drop 15%. Local team of 20 will lose jobs. Offshore workers paid fair local wages.",
+    "context": "E-commerce company. Current local team is expensive but high-quality. Company is struggling with margins. Customer satisfaction expected to decline.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 40,
+      "transparency": 50,
+      "conscious-leadership": 40,
+      "ethical-framework": 40,
+      "compliance": 70
+    },
+    "expected_range": {
+      "overall_min": 25,
+      "overall_max": 60,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "C2",
+    "category": "corporate-borderline",
+    "title": "Performance-Based Restructuring",
+    "action": "Lay off bottom 10% of performers across all departments. Standard severance provided. Performance metrics are objective. Some long-tenured employees with family situations affected.",
+    "context": "Company needs to cut costs by 15%. Traditional approach. Metrics are transparent. Employees have been given feedback throughout the year. Some of those affected don't agree with their ratings.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 45,
+      "transparency": 55,
+      "conscious-leadership": 40,
+      "ethical-framework": 45,
+      "compliance": 70
+    },
+    "expected_range": {
+      "overall_min": 30,
+      "overall_max": 60,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "C3",
+    "category": "corporate-borderline",
+    "title": "Customer Data for Product Improvement",
+    "action": "Use anonymous aggregated customer usage data to improve product features. Opt-out option provided. Data cannot identify individuals. Industry standard practice. Current ToS allows it but vaguely.",
+    "context": "SaaS company. Product team wants usage patterns to fix UX issues. Privacy advocates say opt-in is better. Current approach is opt-out.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 55,
+      "transparency": 40,
+      "conscious-leadership": 60,
+      "ethical-framework": 55,
+      "compliance": 60
+    },
+    "expected_range": {
+      "overall_min": 35,
+      "overall_max": 65,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "C4",
+    "category": "corporate-borderline",
+    "title": "Executive Bonuses During Restructuring",
+    "action": "Pay executive bonuses ($500k total) while laying off 50 staff. Bonuses are contractual (based on annual performance). Layoffs are due to market conditions, not executive performance. Executives could voluntarily decline.",
+    "context": "Company had good year but market is shifting. Layoffs are forward-looking. Executives met their targets. Board says bonuses are contractual. Public perception would be negative. Executives are considering taking a cut.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 30,
+      "transparency": 40,
+      "conscious-leadership": 25,
+      "ethical-framework": 30,
+      "compliance": 70
+    },
+    "expected_range": {
+      "overall_min": 20,
+      "overall_max": 50,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "C5",
+    "category": "corporate-borderline",
+    "title": "Hire Management Consultants for Restructuring",
+    "action": "Hire McKinsey-style consultants ($500k) to identify efficiency savings. Consultants will recommend headcount reductions. Internal team could do this for free. CEO wants 'external validation' for tough decisions.",
+    "context": "200-person company. Profit margins declining. Internal ops team has recommendations but CEO wants prestige consulting report. Staff morale declining. Previous consulting engagement led to 30% layoffs.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 40,
+      "transparency": 35,
+      "conscious-leadership": 30,
+      "ethical-framework": 40,
+      "compliance": 65
+    },
+    "expected_range": {
+      "overall_min": 25,
+      "overall_max": 55,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "D1",
+    "category": "personal-ethical",
+    "title": "Give 10% to Effective Charity",
+    "action": "Commit to donating 10% of annual income to GiveWell-recommended charities. Research shows this will save ~10 lives per year of donating. Modest lifestyle adjustment required.",
+    "context": "Professional earning $120k/year. Currently donates occasionally to various causes. After researching effective altruism, wants to make a structured commitment. Spouse is supportive. No debt. Adequate savings.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D2",
+    "category": "personal-ethical",
+    "title": "Choose Non-Profit Career Over Corporate",
+    "action": "Turn down a $150k corporate job to work at an environmental non-profit for $65k. The non-profit work directly reduces carbon emissions through policy advocacy. Financial buffer of 12 months savings.",
+    "context": "30-year-old professional with offer from both a fossil fuel company ($150k) and an environmental non-profit ($65k). Single, no dependents. Values climate action deeply.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 95,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D3",
+    "category": "personal-ethical",
+    "title": "Report Workplace Harassment",
+    "action": "Formally report a senior colleague who has been making inappropriate comments and unwanted advances toward junior staff. Risk: potential career retaliation. Multiple junior staff have privately confided discomfort.",
+    "context": "Mid-level employee at a firm where a senior partner has a pattern of harassment. HR department is viewed as protective of senior staff. Several colleagues support reporting. The reporter has enough savings to survive job loss.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 100,
+      "transparency": 85,
+      "conscious-leadership": 100,
+      "ethical-framework": 95
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D4",
+    "category": "personal-ethical",
+    "title": "Regular Support for Elderly Neighbour",
+    "action": "Visit an elderly neighbour twice weekly for grocery runs, company, and check-ins. Neighbour lives alone, no local family, mobility issues. Takes 2-3 hours weekly. No compensation expected or offered.",
+    "context": "Neighbour is 82, widowed, uses a walker. Daughter lives 3 hours away and visits monthly. The neighbour has been proud and reluctant to ask for help. Building the relationship gradually out of genuine care.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 90,
+      "conscious-leadership": 95,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D5",
+    "category": "personal-ethical",
+    "title": "Switch to Ethical Consumption",
+    "action": "Systematically switch all household purchases to ethically certified alternatives. Costs 15% more on groceries and household items. Conduct research on each category. Prioritize B Corp, Fair Trade, and local producers.",
+    "context": "Family of four with moderate income. Monthly grocery bill would increase $150. Can absorb by reducing eating out. Children are learning about ethical consumption. Family enjoys the process of researching choices together.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "environmental": 90,
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 85,
+      "ethical-framework": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D6",
+    "category": "personal-ethical",
+    "title": "Collaborative Family Care Decision",
+    "action": "Bring entire family together for a structured conversation about aging parent's care. All options explored (in-home, facility, hybrid). Parent's wishes centred and documented. Decision made together with clear roles and contributions from each sibling.",
+    "context": "Aging parent needs increasing support. Three siblings with different financial situations. Rather than one person deciding, structured family meeting planned over several weeks. Each sibling's constraints and capacities respected.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 90,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D7",
+    "category": "personal-ethical",
+    "title": "Adopt Rescue Dog Instead of Buying",
+    "action": "Adopt a rescue dog from the local shelter instead of buying from a breeder. Pay adoption fee ($300), provide a loving home. Shelter dog has been waiting 8 months. Research done on breed suitability for apartment living.",
+    "context": "Person wants a dog. Breeder option: $2,500, purebred, known history. Shelter option: $300, mixed breed, unknown history. Shelter is overcrowded and euthanizing healthy animals.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 85,
+      "transparency": 85,
+      "conscious-leadership": 85,
+      "ethical-framework": 80
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D8",
+    "category": "personal-ethical",
+    "title": "Return Wallet with Cash Intact",
+    "action": "Find a wallet containing $500 cash and IDs on the street. Immediately contact the owner via the driver's license address. Return everything intact. Decline offered reward.",
+    "context": "Found on morning walk. No CCTV. Could easily keep cash and drop wallet in post box. Owner is an elderly woman whose address is nearby. She likely needs the money. Finder is comfortable financially but $500 would be meaningful.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 100,
+      "transparency": 100,
+      "conscious-leadership": 100,
+      "ethical-framework": 100
+    },
+    "expected_range": {
+      "overall_min": 90,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D9",
+    "category": "personal-ethical",
+    "title": "Pro-Bono Professional Services",
+    "action": "Offer 50 hours/year of pro-bono professional services to local non-profits. Skills (marketing, strategy) would be worth $15k at market rates. Two local charities have confirmed they need this help.",
+    "context": "Senior marketing professional. Wants to give back meaningfully. Many charities can't afford professional marketing. One free evening per week. Colleagues at work have started doing the same.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "D10",
+    "category": "personal-ethical",
+    "title": "Full Apology and Amends for Past Mistake",
+    "action": "After realizing a past action hurt a colleague, write a full apology letter acknowledging the specific impact, take accountability without excuses, and offer concrete amends. Accept whatever response they give.",
+    "context": "Years ago, took credit for a colleague's idea in a meeting. Colleague was silently upset. Recently reconnected. The colleague is now a peer at a different company. No professional risk in apologizing. Personal growth motive.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 100,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "E1",
+    "category": "personal-unethical",
+    "title": "Shoplift from Local Business",
+    "action": "Steal $50 worth of goods from a local family-owned store. Rationalization: 'they have insurance' and 'everyone does it.'",
+    "context": "Person is financially comfortable. Not in need. Sees it as a thrill/entitlement. Store is family-run, narrow margins. Owner works 80-hour weeks.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 10,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "E2",
+    "category": "personal-unethical",
+    "title": "Spread Harmful Rumours About Colleague",
+    "action": "Start a rumour that a colleague is about to be fired for performance issues. No basis in fact. Motive: jealousy over their recent promotion. The rumour damages their reputation and team standing.",
+    "context": "Office environment. The colleague is well-liked and competent. The rumour-spreader wanted the promotion. Now people are treating the colleague differently.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 20,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "E3",
+    "category": "personal-unethical",
+    "title": "Submit Colleague's Work as Own",
+    "action": "Take credit for a junior colleague's research report by submitting it under own name with minor changes. Junior colleague is afraid to speak up. The report determines a promotion decision.",
+    "context": "Competitive workplace. Only one promotion slot. The junior colleague spent 3 months on the research. The senior added minimal input. Manager doesn't know the real author.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 20,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "E4",
+    "category": "personal-unethical",
+    "title": "Ghost Long-Term Partner",
+    "action": "End a 3-year relationship by completely disappearing without explanation. Block all contact. Leave shared apartment with a note. Avoid the discomfort of a breakup conversation.",
+    "context": "Relationship has been struggling for months. Partner believes things are improving. Shared lease, joint finances, pets. The leaver is avoiding confrontation. Partner will be devastated and financially stranded.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "E5",
+    "category": "personal-unethical",
+    "title": "Fabricate Resume Credentials",
+    "action": "Add a fake degree to resume to qualify for a job that requires it. Company doesn't verify education. Role pays $30k more than current job. Person has relevant experience but not the formal qualification.",
+    "context": "Job market is competitive. Person has 10 years experience but no degree. The degree requirement is listed as 'required' but the hiring manager has indicated they might waive it for the right candidate. Person doesn't want to risk it.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 10,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "expected_range": {
+      "overall_min": 0,
+      "overall_max": 25,
+      "expected_decision": "red"
+    }
+  },
+  {
+    "id": "F1",
+    "category": "personal-borderline",
+    "title": "White Lie About Friend's Cooking",
+    "action": "Tell a friend their terrible cooking is 'interesting and creative' rather than being honest. The friend spent hours preparing a meal and is clearly proud of it. Honest opinion would be deeply hurtful and the situation doesn't require truth-telling.",
+    "context": "Social dinner. Friend is not a professional cook. The dish is objectively not good. The friend's identity is not tied to cooking. No health/safety issue.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 70,
+      "transparency": 45,
+      "conscious-leadership": 65,
+      "ethical-framework": 60
+    },
+    "expected_range": {
+      "overall_min": 45,
+      "overall_max": 75,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "F2",
+    "category": "personal-borderline",
+    "title": "Go No-Contact with Toxic Parent",
+    "action": "Stop all contact with a parent after years of emotional manipulation and boundary violations. Parent is elderly and unwell. Siblings are pressuring for reconciliation. The person has tried therapy, boundaries, mediation \u2014 nothing has changed.",
+    "context": "Decades of pattern. Parent has narcissistic traits. Multiple attempts at repair failed. The person's own mental health and young children are being affected. No ill intent \u2014 this is a protective decision after exhausting all options.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 70,
+      "transparency": 70,
+      "conscious-leadership": 75,
+      "ethical-framework": 65
+    },
+    "expected_range": {
+      "overall_min": 55,
+      "overall_max": 80,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "F3",
+    "category": "personal-borderline",
+    "title": "Luxury Vacation with High Carbon Footprint",
+    "action": "Take a 2-week all-inclusive luxury vacation to a tropical resort. Flight + resort + activities = 8 tons CO2. Financially comfortable. Has already donated $2k to carbon removal this year. This is the first vacation in 4 years.",
+    "context": "Burnout from high-stress job. Doctor recommended rest. Working parent with limited vacation windows. The resort employs local staff at fair wages. Alternative lower-carbon options exist but are less restful and logistically harder.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "environmental": 40,
+      "fairness": 70,
+      "transparency": 75,
+      "conscious-leadership": 55,
+      "ethical-framework": 55
+    },
+    "expected_range": {
+      "overall_min": 40,
+      "overall_max": 70,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "F4",
+    "category": "personal-borderline",
+    "title": "Send Children to Private School",
+    "action": "Enrol children in an expensive private school ($30k/year each) instead of well-rated local public school. Private school has smaller classes and more resources. Public school is rated 7/10. This reduces household charitable giving by 70% due to budget constraints.",
+    "context": "Parents want best opportunities for children. Public school is decent but underfunded. The decision has implications for values alignment (does private education contradict equity values?). Community expects 'good parents choose the best.' ",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 50,
+      "transparency": 65,
+      "conscious-leadership": 45,
+      "ethical-framework": 50
+    },
+    "expected_range": {
+      "overall_min": 35,
+      "overall_max": 65,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "F5",
+    "category": "personal-borderline",
+    "title": "Confront Friend About Partner's Infidelity",
+    "action": "Tell a close friend that you saw their partner being unfaithful. Friend is in a vulnerable state (recent loss). The information will devastate them. Not telling would mean they continue in a relationship built on deceit. This could destroy the friendship regardless of the messenger's intent.",
+    "context": "You witnessed the partner in an intimate situation with someone else. You have photographic evidence. Friend and partner are planning a wedding in 6 months. Your motivations are genuine care for your friend's wellbeing.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 75,
+      "transparency": 80,
+      "conscious-leadership": 75,
+      "ethical-framework": 65
+    },
+    "expected_range": {
+      "overall_min": 60,
+      "overall_max": 85,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "F6",
+    "category": "personal-borderline",
+    "title": "Call in Sick for Mental Health Day",
+    "action": "Call in sick to work when physically healthy but emotionally exhausted. Company sick policy says 'genuine illness only.' Mental health is listed as acceptable. The person has used their allotted annual leave. Needs a day to recover from burnout.",
+    "context": "High-pressure workplace. Person has worked 60-hour weeks for 2 months. Not clinically depressed but exhausted. A day of rest would restore productivity. Colleagues would cover. Manager is understanding about mental health generally.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 70,
+      "transparency": 50,
+      "conscious-leadership": 65,
+      "ethical-framework": 60
+    },
+    "expected_range": {
+      "overall_min": 45,
+      "overall_max": 75,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "G1",
+    "category": "everyday-trivial",
+    "title": "Choose Breakfast Cereal",
+    "action": "Choose between two breakfast cereals based on taste preference. Both are similarly priced and nutritious. Purely personal preference.",
+    "context": "Morning routine. No external stakeholders. No environmental or compliance implications. Decision affects only the decision-maker.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "ethical-framework": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "G2",
+    "category": "everyday-trivial",
+    "title": "Choose Evening Movie",
+    "action": "Pick which streaming movie to watch tonight. Preference between comedy and documentary. Partner is happy with either choice. No deeper implications.",
+    "context": "Relaxing evening at home. Partner is indifferent. No stakeholders beyond the couple. No values conflict.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "G3",
+    "category": "everyday-trivial",
+    "title": "Choose Paint Colour for Bedroom",
+    "action": "Choose between two shades of blue for painting the bedroom. Partner slightly prefers one. Both are non-toxic paints. Neither option has significant ethical implications.",
+    "context": "Home renovation. Both paint options are from the same brand with similar environmental profiles. Simple aesthetic preference with minor partner consultation needed.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 85,
+      "ethical-framework": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "G4",
+    "category": "everyday-trivial",
+    "title": "Walk Instead of Drive for Short Trip",
+    "action": "Walk 1km to the local shop instead of driving. Takes 12 minutes instead of 3. Weather is pleasant. Carrying only a small bag. No time pressure. Getting light exercise.",
+    "context": "Routine errand. Car would produce ~0.5kg CO2. Walking produces zero. Not a significant decision by any measure but directionally positive.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "environmental": 85,
+      "ethical-framework": 80
+    },
+    "expected_range": {
+      "overall_min": 75,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "G5",
+    "category": "everyday-trivial",
+    "title": "Choose Between Two Ethical Products",
+    "action": "Choose between two similar cleaning products at the supermarket. Both are eco-friendly. One is slightly cheaper. Both are effective. Pick based on slight preference for the brand's community programs.",
+    "context": "Routine shopping. Both options are ethically sound. Minor preference differentiation. No wrong choice.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "environmental": 80,
+      "fairness": 80,
+      "ethical-framework": 80
+    },
+    "expected_range": {
+      "overall_min": 75,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "H1",
+    "category": "relevance-test",
+    "title": "Sincere Apology (Environment NOT Relevant)",
+    "action": "Apologize sincerely to a friend for missing their important event due to a scheduling mistake. Offer to make it up. No environmental or compliance implications whatsoever.",
+    "context": "Missed friend's birthday party. No excuse, just poor calendar management. Friend was hurt. Genuine remorse. Want to repair the relationship.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 90,
+      "transparency": 90,
+      "conscious-leadership": 85,
+      "ethical-framework": 85
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "H2",
+    "category": "relevance-test",
+    "title": "Start a Personal Blog (Compliance NOT Relevant)",
+    "action": "Start a personal blog about gardening tips. No monetization. No legal or compliance implications. Simple creative expression.",
+    "context": "Retiree with extensive gardening knowledge. Wants to share with community. No business structure. No certifications needed. Simple wordpress site.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 80,
+      "ethical-framework": 80
+    },
+    "expected_range": {
+      "overall_min": 75,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "H3",
+    "category": "relevance-test",
+    "title": "Solo Hiking Route Choice (Fairness NOT Relevant)",
+    "action": "Choose a hiking route for a solo overnight trek. Option A is a popular well-marked trail. Option B is a less-travelled route with more solitude. Prefer B for personal experience. Safety adequate for both. No other people affected.",
+    "context": "Experienced solo hiker. Both routes are within ability. No group decision. No impact on others. Leave-no-trace principles apply equally.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "environmental": 85,
+      "ethical-framework": 80
+    },
+    "expected_range": {
+      "overall_min": 75,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "I1",
+    "category": "hybrid",
+    "title": "Choose Ethical Exit vs. Private Equity",
+    "action": "Founder has two acquisition offers. Option A: Private equity firm ($15M, but known for cost-cutting, layoffs, and tax avoidance). Option B: Industry competitor ($10M who shares company values, will keep all staff, maintain community programs).",
+    "context": "Founder built company over 20 years. 150 employees. Strong culture and community ties. Personal financial goal: $8M would be enough for retirement. Option B aligns with what the company stands for.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 95,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "I2",
+    "category": "hybrid",
+    "title": "Fair Family Business Succession",
+    "action": "Succession plan for family business. One child (A) has worked in business for 10 years, is capable and wants to take over. Other child (B) has no interest in the business but expects equal inheritance. Decision: leave business to A with adjusted inheritance for B, based on fair valuation.",
+    "context": "Multi-generational manufacturing business. $5M value. Child A is the right leader. Child B is upset but has no interest in running it. All children loved equally. The business needs committed leadership to survive.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 75,
+      "transparency": 80,
+      "conscious-leadership": 75,
+      "ethical-framework": 70,
+      "compliance": 70
+    },
+    "expected_range": {
+      "overall_min": 60,
+      "overall_max": 85,
+      "expected_decision": "amber"
+    }
+  },
+  {
+    "id": "I3",
+    "category": "hybrid",
+    "title": "Internal Whistleblowing on Safety Violations",
+    "action": "Escalate serious safety violations (known structural risks in a building under construction) through internal channels despite pressure from management to stay quiet. Risk of losing job. Certain that the public is at risk if unaddressed.",
+    "context": "Construction project manager discovers that cost-cutting has compromised structural integrity. Written warnings to senior management ignored. Whistleblower protections exist in law. Family depends on the income. Moral conviction that public safety comes first.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 100,
+      "ethical-framework": 95,
+      "compliance": 90
+    },
+    "expected_range": {
+      "overall_min": 85,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "I4",
+    "category": "hybrid",
+    "title": "Lobby for Stronger Industry Regulation",
+    "action": "Actively lobby the government for stricter environmental regulations in your industry, even though compliance will cost your company more in the short term. Stronger regulation will level the playing field and protect the environment.",
+    "context": "Manufacturing company. Currently operating at higher environmental standards than competitors. Self-regulation not working. Industry race-to-the-bottom harming environment. CEO believes regulation is necessary for systemic change.",
+    "constitution": "corporate-governance",
+    "module_scores": {
+      "environmental": 95,
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 85,
+      "compliance": 75
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  },
+  {
+    "id": "I5",
+    "category": "hybrid",
+    "title": "Decline Promotion That Requires Values Compromise",
+    "action": "Turn down a promotion to VP of Marketing at a company that is starting to use addictive design patterns on its platform. The role would require overseeing these tactics. The promotion means 40% salary increase. Current role keeps integrity intact.",
+    "context": "Tech professional at a social media company. Company is adopting dark patterns to increase engagement. User mental health concerns documented. Person has young children and thinks about digital ethics daily.",
+    "constitution": "personal-reflection",
+    "module_scores": {
+      "fairness": 85,
+      "transparency": 85,
+      "conscious-leadership": 100,
+      "ethical-framework": 90
+    },
+    "expected_range": {
+      "overall_min": 80,
+      "overall_max": 100,
+      "expected_decision": "green"
+    }
+  }
+]

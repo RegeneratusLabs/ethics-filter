@@ -1,0 +1,1630 @@
+[
+  {
+    "id": "A1",
+    "category": "corporate-ethical",
+    "title": "Voluntary Renewable Energy Switch",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "environmental": 95,
+      "fairness": 80,
+      "transparency": 85,
+      "ethical-framework": 85
+    },
+    "overall": 86.2,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": [
+        "environmental"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "A2",
+    "category": "corporate-ethical",
+    "title": "Pay Equity Transparency",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "ethical-framework": 90,
+      "compliance": 80
+    },
+    "overall": 90.0,
+    "strictness": "strict",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [
+        "compliance"
+      ],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "A3",
+    "category": "corporate-ethical",
+    "title": "Transition to Employee Ownership",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 90,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "overall": 87.5,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "compliance"
+      ],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "A4",
+    "category": "corporate-ethical",
+    "title": "Supply Chain Human Rights Remediation",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 90,
+      "ethical-framework": 90,
+      "compliance": 85
+    },
+    "overall": 90.0,
+    "strictness": "strict",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [
+        "compliance"
+      ],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "A5",
+    "category": "corporate-ethical",
+    "title": "Full Product Ingredient Transparency",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "environmental": 80,
+      "fairness": 90,
+      "transparency": 100,
+      "ethical-framework": 95
+    },
+    "overall": 91.2,
+    "strictness": "strict",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [
+        "environmental"
+      ],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "A6",
+    "category": "corporate-ethical",
+    "title": "Community Profit Sharing",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 85,
+      "ethical-framework": 85,
+      "compliance": 75
+    },
+    "overall": 85.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "green": [
+        "fairness"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "A7",
+    "category": "corporate-ethical",
+    "title": "Reject Fossil Fuel Contract on Principle",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "environmental": 90,
+      "fairness": 80,
+      "transparency": 85,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "overall": 84.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "compliance"
+      ],
+      "green": [
+        "environmental",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "A8",
+    "category": "corporate-ethical",
+    "title": "Above-Minimum Parental Leave",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 80,
+      "ethical-framework": 85,
+      "compliance": 80
+    },
+    "overall": 85.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "green": [
+        "fairness"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "B1",
+    "category": "corporate-unethical",
+    "title": "Price Fixing Agreement",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "overall": 5.0,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "B2",
+    "category": "corporate-unethical",
+    "title": "Systematic Age Discrimination in Hiring",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "overall": 5.0,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "B3",
+    "category": "corporate-unethical",
+    "title": "Illegal Waste Dumping",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "environmental": 5,
+      "fairness": 5,
+      "transparency": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "overall": 5.0,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "environmental",
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "B4",
+    "category": "corporate-unethical",
+    "title": "Mandatory Arbitration for Harassment Claims",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "ethical-framework": 5,
+      "compliance": 10
+    },
+    "overall": 6.2,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "B5",
+    "category": "corporate-unethical",
+    "title": "Quarterly Earnings Manipulation",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 10,
+      "transparency": 5,
+      "ethical-framework": 5,
+      "compliance": 5
+    },
+    "overall": 6.2,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "C1",
+    "category": "corporate-borderline",
+    "title": "Offshore Customer Service",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 40,
+      "transparency": 50,
+      "ethical-framework": 40
+    },
+    "overall": 43.3,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "C2",
+    "category": "corporate-borderline",
+    "title": "Performance-Based Restructuring",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 45,
+      "transparency": 55,
+      "ethical-framework": 45,
+      "compliance": 70
+    },
+    "overall": 53.8,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "amber": [
+        "compliance"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "C3",
+    "category": "corporate-borderline",
+    "title": "Customer Data for Product Improvement",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 55,
+      "transparency": 40,
+      "ethical-framework": 55,
+      "compliance": 60
+    },
+    "overall": 52.5,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "C4",
+    "category": "corporate-borderline",
+    "title": "Executive Bonuses During Restructuring",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 30,
+      "transparency": 40,
+      "ethical-framework": 30,
+      "compliance": 70
+    },
+    "overall": 42.5,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "amber": [
+        "compliance"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "C5",
+    "category": "corporate-borderline",
+    "title": "Hire Management Consultants for Restructuring",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 40,
+      "transparency": 35,
+      "ethical-framework": 40
+    },
+    "overall": 38.3,
+    "strictness": "strict",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "D1",
+    "category": "personal-ethical",
+    "title": "Give 10% to Effective Charity",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "ethical-framework": 90
+    },
+    "overall": 88.3,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D2",
+    "category": "personal-ethical",
+    "title": "Choose Non-Profit Career Over Corporate",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 95,
+      "ethical-framework": 90
+    },
+    "overall": 87.5,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D3",
+    "category": "personal-ethical",
+    "title": "Report Workplace Harassment",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 100,
+      "transparency": 85,
+      "conscious-leadership": 100,
+      "ethical-framework": 95
+    },
+    "overall": 95.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D4",
+    "category": "personal-ethical",
+    "title": "Regular Support for Elderly Neighbour",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 90,
+      "conscious-leadership": 95,
+      "ethical-framework": 90
+    },
+    "overall": 92.5,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D5",
+    "category": "personal-ethical",
+    "title": "Switch to Ethical Consumption",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 85,
+      "ethical-framework": 85
+    },
+    "overall": 86.2,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D6",
+    "category": "personal-ethical",
+    "title": "Collaborative Family Care Decision",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 90,
+      "ethical-framework": 90
+    },
+    "overall": 92.5,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D7",
+    "category": "personal-ethical",
+    "title": "Adopt Rescue Dog Instead of Buying",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 85,
+      "transparency": 85,
+      "ethical-framework": 80
+    },
+    "overall": 83.3,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D8",
+    "category": "personal-ethical",
+    "title": "Return Wallet with Cash Intact",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 100,
+      "transparency": 100,
+      "ethical-framework": 100
+    },
+    "overall": 100.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D9",
+    "category": "personal-ethical",
+    "title": "Pro-Bono Professional Services",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "conscious-leadership": 90,
+      "ethical-framework": 85
+    },
+    "overall": 87.5,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "D10",
+    "category": "personal-ethical",
+    "title": "Full Apology and Amends for Past Mistake",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "conscious-leadership": 100,
+      "ethical-framework": 90
+    },
+    "overall": 95.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "E1",
+    "category": "personal-unethical",
+    "title": "Shoplift from Local Business",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 10,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "overall": 6.2,
+    "strictness": "moderate",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "E2",
+    "category": "personal-unethical",
+    "title": "Spread Harmful Rumours About Colleague",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "overall": 5.0,
+    "strictness": "moderate",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "E3",
+    "category": "personal-unethical",
+    "title": "Submit Colleague's Work as Own",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "overall": 5.0,
+    "strictness": "moderate",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "E4",
+    "category": "personal-unethical",
+    "title": "Ghost Long-Term Partner",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 5,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "overall": 5.0,
+    "strictness": "moderate",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "E5",
+    "category": "personal-unethical",
+    "title": "Fabricate Resume Credentials",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 10,
+      "transparency": 5,
+      "conscious-leadership": 5,
+      "ethical-framework": 5
+    },
+    "overall": 6.2,
+    "strictness": "moderate",
+    "decision": "red",
+    "flags": {
+      "red": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "amber": [],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F1",
+    "category": "personal-borderline",
+    "title": "White Lie About Friend's Cooking",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 70,
+      "transparency": 45,
+      "conscious-leadership": 65,
+      "ethical-framework": 60
+    },
+    "overall": 60.0,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [
+        "transparency"
+      ],
+      "amber": [
+        "fairness",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F2",
+    "category": "personal-borderline",
+    "title": "Go No-Contact with Toxic Parent",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 70,
+      "transparency": 70,
+      "ethical-framework": 65
+    },
+    "overall": 68.3,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F3",
+    "category": "personal-borderline",
+    "title": "Luxury Vacation with High Carbon Footprint",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 70,
+      "transparency": 75,
+      "ethical-framework": 55
+    },
+    "overall": 66.7,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F4",
+    "category": "personal-borderline",
+    "title": "Send Children to Private School",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 50,
+      "transparency": 65,
+      "conscious-leadership": 45,
+      "ethical-framework": 50
+    },
+    "overall": 52.5,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [
+        "conscious-leadership"
+      ],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F5",
+    "category": "personal-borderline",
+    "title": "Confront Friend About Partner's Infidelity",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 75,
+      "transparency": 80,
+      "conscious-leadership": 75,
+      "ethical-framework": 65
+    },
+    "overall": 73.8,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "conscious-leadership",
+        "ethical-framework"
+      ],
+      "green": [
+        "transparency"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "F6",
+    "category": "personal-borderline",
+    "title": "Call in Sick for Mental Health Day",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 70,
+      "transparency": 50,
+      "ethical-framework": 60
+    },
+    "overall": 60.0,
+    "strictness": "moderate",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "G1",
+    "category": "everyday-trivial",
+    "title": "Choose Breakfast Cereal",
+    "enabled": [
+      "ethical-framework"
+    ],
+    "scores": {
+      "ethical-framework": 85
+    },
+    "overall": 85.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "G2",
+    "category": "everyday-trivial",
+    "title": "Choose Evening Movie",
+    "enabled": [
+      "fairness",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "ethical-framework": 90
+    },
+    "overall": 90.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "G3",
+    "category": "everyday-trivial",
+    "title": "Choose Paint Colour for Bedroom",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 85,
+      "ethical-framework": 85
+    },
+    "overall": 85.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "G4",
+    "category": "everyday-trivial",
+    "title": "Walk Instead of Drive for Short Trip",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "ethical-framework": 80
+    },
+    "overall": 80.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "G5",
+    "category": "everyday-trivial",
+    "title": "Choose Between Two Ethical Products",
+    "enabled": [
+      "fairness",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 80,
+      "ethical-framework": 80
+    },
+    "overall": 80.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "H1",
+    "category": "relevance-test",
+    "title": "Sincere Apology (Environment NOT Relevant)",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 90,
+      "transparency": 90,
+      "conscious-leadership": 85,
+      "ethical-framework": 85
+    },
+    "overall": 87.5,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "H2",
+    "category": "relevance-test",
+    "title": "Start a Personal Blog (Compliance NOT Relevant)",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 80,
+      "transparency": 85,
+      "conscious-leadership": 80,
+      "ethical-framework": 80
+    },
+    "overall": 81.2,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "H3",
+    "category": "relevance-test",
+    "title": "Solo Hiking Route Choice (Fairness NOT Relevant)",
+    "enabled": [
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "ethical-framework": 80
+    },
+    "overall": 80.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "I1",
+    "category": "hybrid",
+    "title": "Choose Ethical Exit vs. Private Equity",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 90,
+      "transparency": 85,
+      "ethical-framework": 90,
+      "compliance": 75
+    },
+    "overall": 85.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "transparency",
+        "compliance"
+      ],
+      "green": [
+        "fairness",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "I2",
+    "category": "hybrid",
+    "title": "Fair Family Business Succession",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 75,
+      "transparency": 80,
+      "ethical-framework": 70
+    },
+    "overall": 75.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework"
+      ],
+      "green": []
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "I3",
+    "category": "hybrid",
+    "title": "Internal Whistleblowing on Safety Violations",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "fairness": 95,
+      "transparency": 95,
+      "ethical-framework": 95,
+      "compliance": 90
+    },
+    "overall": 93.8,
+    "strictness": "strict",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  },
+  {
+    "id": "I4",
+    "category": "hybrid",
+    "title": "Lobby for Stronger Industry Regulation",
+    "enabled": [
+      "environmental",
+      "fairness",
+      "transparency",
+      "ethical-framework",
+      "compliance"
+    ],
+    "scores": {
+      "environmental": 95,
+      "fairness": 80,
+      "transparency": 85,
+      "ethical-framework": 85,
+      "compliance": 75
+    },
+    "overall": 84.0,
+    "strictness": "strict",
+    "decision": "amber",
+    "flags": {
+      "red": [],
+      "amber": [
+        "fairness",
+        "transparency",
+        "ethical-framework",
+        "compliance"
+      ],
+      "green": [
+        "environmental"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": false
+  },
+  {
+    "id": "I5",
+    "category": "hybrid",
+    "title": "Decline Promotion That Requires Values Compromise",
+    "enabled": [
+      "fairness",
+      "transparency",
+      "conscious-leadership",
+      "ethical-framework"
+    ],
+    "scores": {
+      "fairness": 85,
+      "transparency": 85,
+      "conscious-leadership": 100,
+      "ethical-framework": 90
+    },
+    "overall": 90.0,
+    "strictness": "moderate",
+    "decision": "green",
+    "flags": {
+      "red": [],
+      "amber": [],
+      "green": [
+        "fairness",
+        "transparency",
+        "conscious-leadership",
+        "ethical-framework"
+      ]
+    },
+    "score_ok": true,
+    "dec_ok": true
+  }
+]
