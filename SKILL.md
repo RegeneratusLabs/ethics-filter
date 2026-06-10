@@ -1,33 +1,11 @@
 ---
 name: ethics-filter
 description: "Use when any decision (corporate, personal, or hybrid) affects stakeholders, resources, or values and you need structured ethical evaluation across environmental, fairness, transparency, conscious leadership, ethical framework, and compliance modules."
-
-> **Note**: This document is the Hermes Agent integration guide. The Ethics Filter is
-> framework-agnostic — see the root [README.md](../README.md) for MCP server, Python SDK,
-> and prompt-based usage that works with Claude, ChatGPT, Cursor, Copilot, and any other
-> agent platform.
-
-category: productivity
-tags:
-  - ethics
-  - decision-making
-  - governance
-  - conscious-leadership
-  - compliance
-  - transparency
-linked_files:
-  - modules/environmental.md
-  - modules/fairness.md
-  - modules/transparency.md
-  - modules/conscious-leadership.md
-  - modules/ethical-framework.md
-  - modules/compliance.md
-  - constitution/templates.json
-  - tests/scenarios_v2.json
-  - tests/results_v2.json
 ---
 
 # 🌐 Ethics Filter — Universal Ethics Evaluation Engine
+
+> **Note:** This is the universal agentskills.io spec skill document. For framework-specific integrations (MCP, Python SDK, Hermes Agent), see the [README.md](README.md) and [docs/](docs/) directory.
 
 ## Overview
 
@@ -48,7 +26,7 @@ This filter is **universal** — it applies to:
 
 **Good instinct** when evaluating: start with the broadest lens and only narrow if the context demands it. Do NOT assume a decision is only relevant to small businesses, organic agriculture, or any specific domain. The moment you bias the filter toward one domain, you miss the ethical dimensions that matter most.
 
-**Tested across 52 scenarios** (see [docs/audit-report.md](../docs/audit-report.md)) covering 9 categories — full score range 5.0–100.0, 11 scenarios scoring 90+. The filter correctly recognizes genuinely ethical behavior and catches deliberate harm regardless of domain.
+**Tested across 52 scenarios** (see [docs/audit-report.md](docs/audit-report.md)) covering 9 categories — full score range 5.0–100.0, 11 scenarios scoring 90+. The filter correctly recognizes genuinely ethical behavior and catches deliberate harm regardless of domain.
 
 ---
 
@@ -128,6 +106,70 @@ Every evaluation produces a permanent record:
 
 ---
 
+## When to Use
+
+Use the Ethics Filter when:
+- Making decisions that affect other people, communities, or the environment
+- Evaluating business strategy, procurement, hiring, or product decisions
+- Navigating personal choices with moral weight (relationships, career, values)
+- Building AI agents that need an ethical reasoning layer
+- Auditing past decisions for ethical blind spots
+- Ensuring compliance with legal, regulatory, or certification standards
+
+### Module Relevance Flowchart
+
+```
+Decision enters filter
+         │
+         ▼
+  ┌─ Does decision involve physical resources, ─┐
+  │  manufacturing, transport, energy, waste?   │
+  └───────── YES ──► Environmental module ──────┘
+         │ NO
+         ▼
+  ┌─ Does decision affect other people? ────────┐
+  │  (exclude: purely personal, no stakeholders)│
+  └───────── YES ──► Fairness module ───────────┘
+         │ NO
+         ▼
+  ┌─ Is decision non-trivial with               ┐
+  │  consequences or external impact?           │
+  └───────── YES ──► Transparency module ───────┘
+         │ NO
+         ▼
+  ┌─ Does decision involve values, integrity,   ┐
+  │  relationships, moral weight, or character? │
+  └───────── YES ──► Conscious Leadership ──────┘
+         │ NO
+         ▼
+  ┌─ Does decision have legal, regulatory,      ┐
+  │  or certification obligations?              │
+  └───────── YES ──► Compliance module ─────────┘
+         │ NO
+         ▼
+  Ethical Framework module (ALWAYS fires)
+         │
+         ▼
+  Aggregation → Verdict
+```
+
+## When NOT to Use
+
+- **Purely aesthetic choices** with zero external impact (paint color, music preference)
+- **Decisions already governed** by a functioning ethical review board with audit trail
+- **Trivial daily preferences** where evaluation cost exceeds decision impact (what to eat for breakfast)
+- **Emergency situations** requiring immediate action (evaluate post-action as audit instead)
+- **Decisions with no agency** — where the decision-maker is mandated by law with no discretion
+
+## Common Mistakes
+
+1. **Applying all 6 modules when only 1-2 are relevant** — let the relevance engine gate. If the decision has no environmental impact, skip the environmental module.
+2. **Confusing compliance with ethics** — a decision can be perfectly legal but deeply unethical (and vice versa). Compliance is one module, not the whole filter.
+3. **Treating scores as objective truth** — scores are structured thinking aids, not measurements. Two reasonable people can disagree on a score. The value is in the reasoning, not the number.
+4. **Skipping stakeholder mapping** (Step 2) — this is the most commonly skipped step and the one that catches the most blind spots.
+5. **Using relaxed strictness to greenlight decisions that should be amber** — strictness should match stakes, not desired outcome.
+6. **Evaluating decisions retroactively to justify them** rather than prospectively to guide them — the filter works best as a planning tool, not a post-hoc rationalization machine.
+
 ## How to Use This Skill
 
 ### For Agents (programmatic)
@@ -201,85 +243,8 @@ Each module has a detailed reference file with its criteria, questions, scoring 
 | ⚖️ Ethical Framework | `modules/ethical-framework.md` | What would each ethical lens say? |
 | 📋 Compliance | `modules/compliance.md` | Does this breach any standard or law? |
 
-## Support Files
-
-| File | What it contains |
-|------|-----------------|
-| `constitution/templates.json` | 6 presets, 3 strictness levels |
-
 ## V2 Audit Report
 
-The comprehensive test of 52 scenarios is at [docs/audit-report.md](../docs/audit-report.md).
+The comprehensive test of 52 scenarios is at [docs/audit-report.md](docs/audit-report.md).
 Key results: 23 GREEN, 14 AMBER, 15 RED. Full score range 5.0–100.0.
 Module relevance confirmed working across all categories.
-
----
-
-## When to Use
-
-Use the Ethics Filter when:
-- Making decisions that affect other people, communities, or the environment
-- Evaluating business strategy, procurement, hiring, or product decisions
-- Navigating personal choices with moral weight (relationships, career, values)
-- Building AI agents that need an ethical reasoning layer
-- Auditing past decisions for ethical blind spots
-- Ensuring compliance with legal, regulatory, or certification standards
-
-## When NOT to Use
-
-- **Purely aesthetic choices** with zero external impact (paint color, music preference)
-- **Decisions already governed** by a functioning ethical review board with audit trail
-- **Trivial daily preferences** where evaluation cost exceeds decision impact (what to eat for breakfast)
-- **Emergency situations** requiring immediate action (evaluate post-action as audit instead)
-- **Decisions with no agency** — where the decision-maker is mandated by law with no discretion
-
-## Common Mistakes
-
-1. **Applying all 6 modules when only 1-2 are relevant** — let the relevance engine gate. If the decision has no environmental impact, skip the environmental module.
-2. **Confusing compliance with ethics** — a decision can be perfectly legal but deeply unethical (and vice versa). Compliance is one module, not the whole filter.
-3. **Treating scores as objective truth** — scores are structured thinking aids, not measurements. Two reasonable people can disagree on a score. The value is in the reasoning, not the number.
-4. **Skipping stakeholder mapping** (Step 2) — this is the most commonly skipped step and the one that catches the most blind spots.
-5. **Using relaxed strictness to greenlight decisions that should be amber** — strictness should match stakes, not desired outcome.
-6. **Evaluating decisions retroactively to justify them** rather than prospectively to guide them — the filter works best as a planning tool, not a post-hoc rationalization machine.
-
-## Decision Flowchart
-
-```
-Decision enters filter
-         │
-         ▼
-  ┌─ Does decision involve physical ─┐
-  │  resources, manufacturing,       │
-  │  transport, energy, waste?       │
-  └───────── YES ──► Environmental ──┘
-         │ NO
-         ▼
-  ┌─ Does decision affect other ────┐
-  │  people? (exclude: purely       │
-  │  personal, no stakeholders)     │
-  └───────── YES ──► Fairness ──────┘
-         │ NO
-         ▼
-  ┌─ Is decision non-trivial with   ┐
-  │  consequences or external       │
-  │  impact?                        │
-  └───────── YES ──► Transparency ──┘
-         │ NO
-         ▼
-  ┌─ Does decision involve values,  ┐
-  │  integrity, relationships,      │
-  │  moral weight, or character?    │
-  └───────── YES ──► Conscious ─────┘
-         │ NO          Leadership
-         ▼
-  ┌─ Does decision have legal,      ┐
-  │  regulatory, or certification  │
-  │  obligations?                   │
-  └───────── YES ──► Compliance ────┘
-         │ NO
-         ▼
-  Ethical Framework (ALWAYS fires)
-         │
-         ▼
-  Aggregation → Verdict
-```

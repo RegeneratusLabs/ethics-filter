@@ -2,75 +2,21 @@
 """Run all 52 scenarios through updated ethics filter with module relevance."""
 import json, os
 
-BASE = os.path.expanduser("~/.hermes/skills/ethics-filter")
-with open(BASE + "/tests/scenarios_v2.json") as f:
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+with open(os.path.join(BASE, "tests", "scenarios_v2.json")) as f:
     scenarios = json.load(f)
-with open(BASE + "/constitution/templates.json") as f:
+with open(os.path.join(BASE, "constitution", "templates.json")) as f:
     templates = json.load(f)
 
-# Module relevance engine (same as in scenarios_v2.py)
-MODULE_RELEVANCE = {
-    "environmental": {"relevant_when": [
-        "physical resources", "manufacturing", "transport", "energy",
-        "waste", "packaging", "supply chain", "travel", "raw materials",
-        "chemicals", "emissions", "water", "land use", "construction",
-        "product design", "sourcing", "fossil fuels", "renewable",
-        "shipping", "fleet", "facilities", "office", "hardware",
-        "food production", "agriculture", "forestry", "mining",
-        "carbon", "footprint", "recycling", "plastic", "sustainable",
-        "eco", "environment", "climate", "co2", "green", "pollution"
-    ]},
-    "fairness": {"relevant_when": [], "exclude_when": [
-        "purely personal preference",
-        "trivial internal decision affecting only the decision-maker",
-        "no external stakeholders",
-        "no other people affected",
-        "affects only the decision-maker"
-    ]},
-    "transparency": {"relevant_when": [], "exclude_when": [
-        "trivial personal preference without consequences",
-        "purely personal preference",
-        "no external stakeholders",
-        "no deeper implications",
-        "no wrong choice"
-    ]},
-    "conscious-leadership": {"relevant_when": [
-        "values", "purpose", "long-term", "leadership", "culture",
-        "team", "integrity", "dilemma", "difficult choice", "character",
-        "role model", "conflict", "change management", "strategy",
-        "hiring", "firing", "conversation", "accountability", "growth",
-        "relationship", "family", "friend", "community", "care",
-        "apology", "amends", "promotion", "career", "values",
-        "ethical", "morals", "principle", "responsibility", "trust"
-    ]},
-    "ethical-framework": {"relevant_when": []},
-    "compliance": {"relevant_when": [
-        "legal", "regulation", "certification", "contract", "audit",
-        "tax", "reporting", "license", "permit", "standard",
-        "policy", "law", "compliance", "governance", "board",
-        "disclosure", "filing", "statutory", "obligation",
-        "b corp", "iso", "organic", "fair trade", "accredited",
-        "employment", "privacy", "gdpr", "financial", "industry standard",
-        "illegal", "crime", "unlawful", "toxic", "hazardous",
-        "inspection", "regulatory", "statute", "liability",
-        "negligence", "due diligence", "fiduciary", "oversight",
-        "safety violation", "structural risk", "building code"
-    ]}
-}
+# Import engine for relevance detection and thresholds
+from ethics_filter.engine import check_relevance, get_enabled_modules, get_thresholds
+from ethics_filter.engine import MODULE_RELEVANCE, MODULE_NAMES
 
-def check_relevance(action, context, module):
-    info = MODULE_RELEVANCE.get(module, {})
-    text = (action + " " + context).lower()
-    if not info.get("relevant_when"):
-        for exclude in info.get("exclude_when", []):
-            if exclude.lower() in text:
-                return False
-        return True
-    return any(kw.lower() in text for kw in info["relevant_when"])
 
 def get_enabled(action, context, preset):
+    """Legacy wrapper: get list of enabled module names for a preset dict."""
     modules = preset.get("modules", {})
-    text = (action + " " + context).lower()
     enabled = []
     for mod, active in modules.items():
         if not active:
@@ -82,31 +28,32 @@ def get_enabled(action, context, preset):
             enabled.append(mod)
     return enabled
 
+
 def evaluate_scenario(sc):
     action = sc["action"]
     context = sc["context"]
     preset = templates["presets"].get(sc["constitution"], templates["presets"]["maximalist"])
     strictness = preset.get("strictness", "moderate")
     thresholds = templates["strictness_levels"].get(strictness)
-    
+
     enabled = get_enabled(action, context, preset)
     pre_scores = sc["module_scores"]
     scores = {m: pre_scores[m] for m in enabled if m in pre_scores}
-    
+
     if not scores:
         return None
-    
+
     overall = sum(scores.values()) / len(scores)
     red_t = thresholds["red_threshold"]
     green_t = thresholds["green_threshold"]
-    
+
     if overall < red_t:
         decision = "red"
     elif overall >= green_t:
         decision = "green"
     else:
         decision = "amber"
-    
+
     flags = {"red": [], "amber": [], "green": []}
     for mod, score in scores.items():
         if score < red_t:
@@ -115,12 +62,12 @@ def evaluate_scenario(sc):
             flags["green"].append(mod)
         else:
             flags["amber"].append(mod)
-    
+
     # Check expected outcome
     exp = sc.get("expected_range", {})
     score_ok = exp.get("overall_min", 0) <= overall <= exp.get("overall_max", 100)
     dec_ok = decision == exp.get("expected_decision", "")
-    
+
     return {
         "id": sc["id"],
         "category": sc["category"],
@@ -143,7 +90,7 @@ for sc in scenarios:
         results.append(r)
 
 # Save
-with open(BASE + "/tests/results_v2.json", "w") as f:
+with open(os.path.join(BASE, "tests", "results_v2.json"), "w") as f:
     json.dump(results, f, indent=2)
 
 # Print summary
@@ -199,4 +146,4 @@ print(f"\n--- FULL SCORE RANGE ---")
 for r in sorted(results, key=lambda x: x["overall"]):
     print(f"  {r['id']:<4} {r['title'][:50]:<50} {r['overall']:>5.1f}  {r['decision'].upper():<6}  [{', '.join(r['enabled'])}]")
 
-print(f"\nResults saved to: {BASE}/tests/results_v2.json")
+print(f"\nResults saved to: tests/results_v2.json")
