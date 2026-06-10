@@ -32,68 +32,61 @@ Modules only fire when relevant to the decision context. A personal apology does
 
 ## Getting Started
 
-The Ethics Filter can be used from **any AI platform** — pick your path below.
+The Ethics Filter is **framework-agnostic** — use it from any agent, any platform, any programming language.
 
 ---
 
-### 🐍 Hermes Agent (Native Skill)
+### 🔌 MCP Server (Universal — works with any MCP host)
 
-If you use [Hermes Agent](https://hermes-agent.nousresearch.com), load the skill directly:
+The Ethics Filter exposes an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that any MCP-compatible host can connect to.
 
-```bash
-# Load the skill
-skill_view(name="ethics-filter")
-
-# Then evaluate any decision
-"Run this through the ethics filter: [decision]. Use maximalist constitution at moderate strictness."
-```
-
----
-
-### 🔌 MCP Server (Universal — works with 15+ platforms)
-
-The Ethics Filter exposes an [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that any MCP-compatible host can connect to. One server, universal reach.
-
-**MCP-compatible platforms:**
-
-| Platform | How to Connect |
-|----------|---------------|
-| **Claude Desktop** | Add to `claude_desktop_config.json` → `mcpServers` |
-| **Claude Code** | `claude mcp add ethics-filter -- uv run ethics-filter-mcp` |
-| **Cursor** | Add to `~/.cursor/mcp.json` or `.cursor/mcp.json` (committable) |
-| **GitHub Copilot** | VS Code settings → Copilot → MCP → Add server |
-| **Cline / Roo Code** | MCP configuration UI or ask agent to add it |
-| **Continue.dev** | Add YAML block to `.continue/mcpServers/` |
-| **Aider** | Add `mcp-servers:` to `~/.aider.conf.yml` |
-| **OpenAI Agents SDK** | `Agent(mcp_servers=[MCPServerStdio(...)])` |
-| **ChatGPT** | Connect as an MCP App in Developer Mode |
-| **CrewAI** | `Agent(mcps=["https://ethics-filter.example.com/mcp"])` |
-| **AutoGPT** | MCP Tool Block → enter server URL |
-| **Dify** | Tools → MCP → Add MCP Server (HTTP) |
-| **n8n** | MCP Client node (v1.88+ native) |
-| **Semantic Kernel** | `MCPStdioPlugin` or `MCPSsePlugin` |
-| **Google ADK** | `Agent(tools=[McpToolset(...)])` |
-
-#### Quick Start (MCP)
+#### Quick Start
 
 ```bash
-# Clone and install
+# Clone the repo
 git clone https://github.com/RegeneratusLabs/ethics-filter
 cd ethics-filter
-pip install -r requirements.txt
 
-# Run the MCP server
+# Install dependencies and start the MCP server
+uv sync
 uv run ethics-filter-mcp
 ```
 
-Then point your MCP host at it. For example, in **Claude Code**:
+Then point your MCP host at it. The server auto-discovers tools on connection.
+
+#### Tools Exposed
+
+| Tool | What it Does |
+|------|-------------|
+| `determine_relevant_modules` | Keyword analysis to see which modules apply to a decision |
+| `get_module_details` | Returns the full criteria and scoring rubric for any module |
+| `list_constitutions` | Lists all constitution presets and strictness levels |
+| `get_constitution_details` | Returns a specific preset's full configuration |
+| `build_prompt` | Builds a complete structured prompt the LLM can use to score the decision |
+
+#### Resources Exposed
+
+| Resource | What it Serves |
+|----------|---------------|
+| `ethics://modules` | List of all available modules |
+| `ethics://module/{name}` | Full markdown content for a specific module |
+| `ethics://constitutions` | All constitution presets |
+| `ethics://constitution/{name}` | Specific preset JSON configuration |
+
+#### Platform Config Examples
+
+<details>
+<summary><b>Claude Code</b></summary>
 
 ```bash
 claude mcp add ethics-filter -- uv run ethics-filter-mcp
 ```
+</details>
 
-Or in **Cursor**, add to `.cursor/mcp.json`:
+<details>
+<summary><b>Claude Desktop</b></summary>
 
+Add to `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
@@ -104,86 +97,12 @@ Or in **Cursor**, add to `.cursor/mcp.json`:
   }
 }
 ```
+</details>
 
----
-
-### 📦 Python SDK
-
-Import the evaluation engine directly into any Python project:
-
-```bash
-pip install ethics-filter
-```
-
-```python
-from ethics_filter import evaluate
-
-result = evaluate(
-    decision="Should we switch to biodegradable packaging?",
-    constitution="maximalist",
-    strictness="moderate"
-)
-
-print(result.score)    # 87.5
-print(result.verdict)  # GREEN
-print(result.reasoning)  # Per-module breakdown
-```
-
-Works directly with:
-- **OpenAI Agents SDK** — `@function_tool` decorator
-- **LangChain / LangGraph** — `@tool` decorator
-- **CrewAI** — `@tool` `BaseTool` subclass
-- **Semantic Kernel** — `@kernel_function` decorator
-- **AutoGPT** — Python agent plugin
-
----
-
-### 🧪 Standalone Tool
-
-```bash
-# Clone and run test scenarios
-git clone https://github.com/RegeneratusLabs/ethics-filter
-cd ethics-filter
-
-# Evaluate all 52 test scenarios
-python3 tests/evaluate_v2.py
-
-# Generate audit report
-python3 tests/generate_report_v2.py
-```
-
----
-
-## Per-Platform Configuration Examples
-
-### Claude Code (Plugin Mode)
-
-Package as a `.claude-plugin/` directory with a bundled MCP server. Drop-in compatible since the Hermes SKILL.md format is nearly identical to Claude Code's skill format. Or use:
-
-```bash
-claude mcp add ethics-filter -- uv run ethics-filter-mcp
-claude "Run this through the ethics filter: should I partner with this supplier?"
-```
-
-### Claude Desktop
-
-Edit `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "ethics-filter": {
-      "command": "uv",
-      "args": ["run", "--directory", "/absolute/path/to/ethics-filter", "ethics-filter-mcp"]
-    }
-  }
-}
-```
-
-### Cursor
+<details>
+<summary><b>Cursor</b></summary>
 
 Add to `.cursor/mcp.json`:
-
 ```json
 {
   "mcpServers": {
@@ -194,11 +113,30 @@ Add to `.cursor/mcp.json`:
   }
 }
 ```
+</details>
 
-### OpenAI Agents SDK
+<details>
+<summary><b>GitHub Copilot</b></summary>
+
+VS Code → Settings → Copilot → MCP → Add server:
+- Name: `ethics-filter`
+- Type: `stdio`
+- Command: `uv run ethics-filter-mcp`
+</details>
+
+<details>
+<summary><b>Cline / Roo Code</b></summary>
+
+In the MCP configuration UI, add a new server:
+- Name: `ethics-filter`
+- Command: `uv run ethics-filter-mcp`
+</details>
+
+<details>
+<summary><b>OpenAI Agents SDK</b></summary>
 
 ```python
-from agents import Agent, Runner, MCPServerStdio
+from agents import Agent, MCPServerStdio
 
 async with MCPServerStdio(
     name="ethics-filter",
@@ -206,13 +144,29 @@ async with MCPServerStdio(
 ) as server:
     agent = Agent(
         name="Assistant",
-        instructions="You have access to an ethics evaluation tool.",
+        instructions="You can evaluate decisions through the ethics filter.",
         mcp_servers=[server]
     )
     result = await Runner.run(agent, "Run this through the ethics filter: launch a new product line")
 ```
+</details>
 
-### LangChain / LangGraph
+<details>
+<summary><b>CrewAI</b></summary>
+
+```python
+from crewai import Agent
+
+ethics_officer = Agent(
+    role="Ethics Officer",
+    goal="Ensure all decisions pass ethical review",
+    mcps=["https://ethics-filter.example.com/mcp"]
+)
+```
+</details>
+
+<details>
+<summary><b>LangChain / LangGraph</b></summary>
 
 ```python
 from langchain_core.tools import tool
@@ -220,76 +174,75 @@ from ethics_filter import evaluate
 
 @tool
 def ethics_evaluation(decision: str, constitution: str = "maximalist") -> str:
-    """Evaluate a decision through 6 ethical modules (Environmental, Fairness, Transparency, Conscious Leadership, Ethical Framework, Compliance) and return GREEN/AMBER/RED with detailed reasoning."""
+    """Evaluate a decision through 6 ethical modules."""
     result = evaluate(decision, constitution)
-    return f"Verdict: {result.verdict}\nScore: {result.score}\nReasoning: {result.reasoning}"
+    return f"Verdict: {result.verdict}\nScore: {result.score}"
 
-# Use in any LangChain agent
-from langchain.agents import create_react_agent, AgentExecutor
 agent = create_react_agent(llm, tools=[ethics_evaluation])
 ```
+</details>
 
-### CrewAI
-
-```python
-from crewai import Agent
-from crewai_tools import tool
-from ethics_filter import evaluate
-
-@tool("Ethics Evaluation")
-def ethics_evaluation(decision: str) -> str:
-    """Evaluate a decision through 6 ethical modules."""
-    result = evaluate(decision)
-    return f"{result.verdict}: {result.reasoning}"
-
-ethics_officer = Agent(
-    role="Ethics Officer",
-    goal="Ensure all decisions pass ethical review",
-    tools=[ethics_evaluation]
-)
-```
-
-Or use MCP directly:
-
-```python
-ethics_officer = Agent(
-    role="Ethics Officer",
-    goal="Ensure all decisions pass ethical review",
-    mcps=["https://ethics-filter.example.com/mcp"]
-)
-```
-
-### Google ADK
+<details>
+<summary><b>Google ADK</b></summary>
 
 ```python
 from google.adk.tools.mcp_toolset import McpToolset, StdioServerParameters
 
 tools = McpToolset(
     connection_params=StdioServerParameters(
-        command="uv",
-        args=["run", "ethics-filter-mcp"]
+        command="uv", args=["run", "ethics-filter-mcp"]
     )
 )
-agent = Agent(
-    model="gemini-2.5-pro",
-    tools=[tools]
+agent = Agent(model="gemini-2.5-pro", tools=[tools])
+```
+</details>
+
+---
+
+### 🐍 Python SDK
+
+Import the engine directly into any Python project:
+
+```python
+from ethics_filter.engine import (
+    determine_relevant_modules,   # check which modules apply
+    get_module_content,           # read a module's criteria
+    build_evaluation_prompt,      # build a structured LLM prompt
+    list_available_modules,       # list all modules
 )
 ```
 
+No Hermes, no MCP, no agent framework required. Pure Python.
+
+### ⚡ Prompt-Based (any LLM, any platform)
+
+The module markdown files in [`modules/`](modules/) contain the complete evaluation criteria and scoring rubrics. Any LLM can evaluate a decision by reading the relevant modules and applying the methodology. No special software needed.
+
+### 🧪 Standalone Test Runner
+
+```bash
+cd ethics-filter
+uv run python tests/evaluate_v2.py     # Run all 52 test scenarios
+uv run python tests/generate_report_v2.py  # Generate audit report
+```
+
+### 🧙 Hermes Agent
+
+If you use [Hermes Agent](https://hermes-agent.nousresearch.com), see [`docs/hermes-integration.md`](docs/hermes-integration.md) for the native skill setup.
+
 ---
 
-## MCP Tools Exposed
+## How It Works
 
-Once connected, the Ethics Filter exposes these tools:
+The Ethics Filter uses a **relevance engine** that scans the decision context for keywords to determine which of the 6 modules apply. The host LLM then evaluates each relevant module using the criteria in the corresponding markdown file, assigns scores (0-100), and produces an overall verdict.
 
-| Tool | Description |
-|------|-------------|
-| `evaluate_decision` | Run a decision through ethical modules and get GREEN/AMBER/RED verdict |
-| `get_audit_trail` | Retrieve a permanent audit record for any past evaluation |
-| `list_constitutions` | List available constitution presets |
-| `get_constitution` | View the full configuration of a specific preset |
+The evaluation pipeline is:
 
----
+1. **Action + Context** → You provide what's being decided and the background
+2. **Relevance Check** → Engine determines which modules apply
+3. **Module Scoring** → LLM scores each relevant module using its rubric
+4. **Aggregation** → Scores are averaged and compared against strictness thresholds
+5. **Verdict** → 🟢 GREEN / 🟡 AMBER / 🔴 RED
 
 ## Constitution Configuration
 
@@ -328,6 +281,8 @@ Strictness levels:
 | **Maximalist** | High-stakes decisions |
 | **Minimal Safe** | Baseline fairness + compliance |
 
+Full presets: [`constitution/templates.json`](constitution/templates.json)
+
 ## What Makes This Different
 
 | Dimension | Existing Guardrails | This Skillset |
@@ -337,6 +292,7 @@ Strictness levels:
 | Audience | Developers | **Everyone** |
 | Source | Technical research | **B Corp, Markkula Center, Conscious Capitalism** |
 | Modularity | One-size-fits-all | **Per-person constitution** |
+| Integration | Single platform | **MCP, SDK, prompt-based** |
 
 ## Test Results
 
@@ -348,6 +304,37 @@ Strictness levels:
 - **RED (0-49)**: 15 — unethical decisions correctly blocked
 
 Full report: [`docs/audit-report.md`](docs/audit-report.md)
+
+## Project Structure
+
+```
+ethics-filter/
+├── LICENSE                  # MIT
+├── README.md                # You are here
+├── pyproject.toml           # Python package with MCP entry point
+├── ethics_filter/
+│   ├── __init__.py
+│   ├── engine.py            # Core evaluation engine (framework-agnostic)
+│   └── mcp_server.py        # MCP server (uses engine.py)
+├── constitution/
+│   └── templates.json       # 6 presets, 3 strictness levels
+├── modules/
+│   ├── environmental.md     # Full module criteria & rubric
+│   ├── fairness.md
+│   ├── transparency.md
+│   ├── conscious-leadership.md
+│   ├── ethical-framework.md
+│   └── compliance.md
+├── docs/
+│   ├── audit-report.md      # 52-scenario evaluation results
+│   ├── brief.md             # Original project brief
+│   └── hermes-integration.md # Hermes Agent setup (reframed from SKILL.md)
+└── tests/
+    ├── scenarios_v2.json
+    ├── evaluate_v2.py       # Test runner
+    ├── generate_report_v2.py
+    └── results_v2.json
+```
 
 ## License
 

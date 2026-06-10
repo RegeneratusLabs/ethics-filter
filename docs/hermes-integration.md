@@ -1,6 +1,12 @@
 ---
 name: ethics-filter
 description: "The Universal Ethics Filter — a structured decision-evaluation engine for any agent, any business, any personal decision. Runs every action through 6 ethical modules and produces scored, auditable reasoning."
+
+> **Note**: This document is the Hermes Agent integration guide. The Ethics Filter is
+> framework-agnostic — see the root [README.md](../README.md) for MCP server, Python SDK,
+> and prompt-based usage that works with Claude, ChatGPT, Cursor, Copilot, and any other
+> agent platform.
+
 category: productivity
 tags:
   - ethics

@@ -1,0 +1,15 @@
+[project]
+name = "ethics-filter"
+version = "0.1.0"
+description = "Universal Ethics Evaluation Engine — evaluate any decision through 6 structured ethical modules"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ethics Filter Contributors" }]
+
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+ethics-filter-mcp = "ethics_filter.mcp_server:main"
