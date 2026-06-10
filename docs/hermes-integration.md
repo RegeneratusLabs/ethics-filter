@@ -236,11 +236,13 @@ Use the Ethics Filter when:
 ## Common Mistakes
 
 1. **Applying all 6 modules when only 1-2 are relevant** — let the relevance engine gate. If the decision has no environmental impact, skip the environmental module.
-2. **Confusing compliance with ethics** — a decision can be perfectly legal but deeply unethical (and vice versa). Compliance is one module, not the whole filter.
+2. **Confusing compliance with ethics** ("it's legal so it's fine") — a decision can be perfectly legal but deeply unethical (and vice versa). Compliance is one module, not the whole filter. The "borderline legal" trap is the most common version: structuring decisions to avoid legal definitions while producing the same harmful outcome.
 3. **Treating scores as objective truth** — scores are structured thinking aids, not measurements. Two reasonable people can disagree on a score. The value is in the reasoning, not the number.
-4. **Skipping stakeholder mapping** (Step 2) — this is the most commonly skipped step and the one that catches the most blind spots.
+4. **Skipping stakeholder mapping** (Step 2) — this is the most commonly skipped step and the one that catches the most blind spots. Without it, you default to the most powerful stakeholder's perspective.
 5. **Using relaxed strictness to greenlight decisions that should be amber** — strictness should match stakes, not desired outcome.
 6. **Evaluating decisions retroactively to justify them** rather than prospectively to guide them — the filter works best as a planning tool, not a post-hoc rationalization machine.
+7. **Letting urgency bypass the pipeline** ("we don't have time for ethics") — urgency does not absolve ethical responsibility. Even under pressure, follow the full pipeline.
+8. **Assuming "obviously ethical" decisions need no evaluation** — the most dangerous rationalization. Seemingly obvious good deeds can have hidden stakeholder impacts.
 
 ## Decision Flowchart
 
