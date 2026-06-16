@@ -1,4 +1,4 @@
-# 🔓 Module 3: Transparency & Accountability
+# Module 3: Transparency & Accountability
 
 ## Based On
 B Corp Governance criteria, F-A-T-H-E-R Leadership (Fairness, Accountability, Trust, Honesty, Equality, Respect), Markkula Center Publicity Test, Transparency International standards.

@@ -1,4 +1,4 @@
-# 🤝 Module 2: Fairness & Stakeholder Impact
+# Module 2: Fairness & Stakeholder Impact
 
 ## Based On
 B Corp Workers + Community criteria, IFOAM Fairness principle, Stakeholder Theory (Freeman), Conscious Capitalism stakeholder orientation, Rawls' Justice as Fairness.

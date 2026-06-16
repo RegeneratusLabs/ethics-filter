@@ -1,4 +1,4 @@
-# 📋 Module 6: Compliance & Certification Guard
+# Module 6: Compliance & Certification Guard
 
 ## Based On
 B Corp certification standards, organic certification standards (general), Fair Trade certification, regulatory compliance frameworks, ISO standards, audit requirements.

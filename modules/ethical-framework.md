@@ -1,4 +1,4 @@
-# ⚖️ Module 5: Ethical Decision Framework
+# Module 5: Ethical Decision Framework
 
 ## Based On
 Markkula Center for Applied Ethics (Santa Clara University) 5-Step Framework, Michael Davis 7-Step Method, IDEA Framework (Trillium Health Partners), IFOAM Care principle.

@@ -1,4 +1,4 @@
-# 🌏 Module 1: Environmental Stewardship
+# Module 1: Environmental Stewardship
 
 ## Based On
 B Corp Environment criteria, ESG frameworks, Triple Bottom Line (People/Planet/Profit), IFOAM Ecology principle, circular economy principles.

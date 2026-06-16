@@ -1,4 +1,4 @@
-# 🧘 Module 4: Conscious Leadership & Values Alignment
+# Module 4: Conscious Leadership & Values Alignment
 
 ## Based On
 Conscious Leadership 15 Commitments (Jim Dethmer, Diana Chapman, Kaley Klemp), Conscious Capitalism (Mackey & Sisodia), Values-Based Leadership (Harry Kraemer), F-A-T-H-E-R framework.
