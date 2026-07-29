@@ -216,3 +216,6 @@ MIT — free to use, fork, modify, and distribute.
 This skillset is the ethical conscience layer for any AI agent interacting with the world. Businesses plug it into procurement, hiring, and compliance pipelines. Individuals plug it into their personal AI assistants.
 
 The long game: every AI runs decisions through an ethics filter by default. This is the first step.
+
+
+<noscript><a href="https://liberapay.com/JoshIsRegenerating/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
