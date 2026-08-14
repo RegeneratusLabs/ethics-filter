@@ -1,0 +1,39 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: CLI smoke test
+        run: |
+          uv run ethics-filter modules
+          uv run ethics-filter evaluate "Fix prices with competitors" \
+            --scores '{"fairness": 5, "transparency": 10, "ethical-framework": 5, "compliance": 5}' \
+            --no-audit --json | grep '"decision": "red"'
+
+      - name: Plugin bundle sync check
+        run: uv run python scripts/sync_skill.py --check
+
+      - name: MCP server imports
+        run: uv run python -c "from ethics_filter.mcp_server import create_server; create_server()"

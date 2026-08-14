@@ -1,6 +1,8 @@
 ===========================================================================
-  ETHICS FILTER v2 — FINAL TEST REPORT
-  Generated: 2026-06-09 23:52
+  ETHICS FILTER — TEST REPORT
+  Generated: 2026-08-14 08:26 UTC
+  Source: tests/scenarios.json (52 scenarios, 9 categories)
+  Regenerate: python scripts/generate_audit_report.py
 ===========================================================================
 
 OVERALL RESULTS
@@ -26,174 +28,144 @@ Score range: 5.0 - 100.0
 Mean score: 64.8
 Median: 83.3
 
-===========================================================================
-  1. MODULE RELEVANCE — VERIFICATION
-===========================================================================
-
-The filter only applies modules relevant to each decision context.
-Key examples:
-
-  G1 (Breakfast cereal choice):
-    Modules: ethical-framework
-    Note: ONLY ethical-framework fires. No fairness, no transparency, no compliance, no environment.
-  G2 (Movie choice with partner):
-    Modules: fairness, conscious-leadership, ethical-framework
-    Note: fairness + conscious-leadership + ethical-framework. Transparency skipped (no deeper implications).
-  G5 (Buying ethical product):
-    Modules: fairness, conscious-leadership, ethical-framework
-    Note: fairness + conscious-leadership + ethical-framework. Transparency skipped (no wrong choice).
-  H1 (Sincere apology):
-    Modules: fairness, transparency, conscious-leadership, ethical-framework
-    Note: fairness + transparency + conscious-leadership + ethical-framework. Environmental and compliance correctly excluded.
-  H3 (Solo hiking route):
-    Modules: transparency, conscious-leadership, ethical-framework
-    Note: transparency + conscious-leadership + ethical-framework. Fairness correctly excluded (no other people affected).
-  B3 (Illegal waste dumping):
-    Modules: environmental, fairness, transparency, ethical-framework, compliance
-    Note: ALL six modules fire including compliance (illegal, toxic keywords matched).
-  D1 (Charitable giving):
-    Modules: fairness, transparency, ethical-framework
-    Note: fairness + transparency + ethical-framework. Environmental and compliance correctly excluded.
-  D3 (Report harassment):
-    Modules: fairness, transparency, conscious-leadership, ethical-framework
-    Note: fairness + transparency + conscious-leadership + ethical-framework. Environmental and compliance not relevant.
+NOTE ON CORPUS SEMANTICS
+----------------------------------------
+The scenario authors scored only the modules they intended to participate.
+The keyword relevance engine may fire extra modules (e.g. a charity decision
+whose text mentions 'environment'). The corpus therefore encodes its intended
+module set through score coverage: only enabled modules that have a score
+participate in the mean. Tests/test_scenarios.py pins this behaviour.
 
 ===========================================================================
-  2. HIGHEST ETHICS SCORES (GREEN 85+)
+  ALL SCENARIOS
 ===========================================================================
 
-  D8  100.0  GREEN   Return Wallet with Cash Intact                      flags: none
-  D3   95.0  GREEN   Report Workplace Harassment                         flags: none
-  D10   95.0  GREEN   Full Apology and Amends for Past Mistake            flags: none
-  I3   93.8  GREEN   Internal Whistleblowing on Safety Violations        flags: none
-  D4   92.5  GREEN   Regular Support for Elderly Neighbour               flags: none
-  D6   92.5  GREEN   Collaborative Family Care Decision                  flags: none
-  A5   91.2  GREEN   Full Product Ingredient Transparency                flags: environmental
-  A2   90.0  GREEN   Pay Equity Transparency                             flags: compliance
-  A4   90.0  GREEN   Supply Chain Human Rights Remediation               flags: compliance
-  G2   90.0  GREEN   Choose Evening Movie                                flags: none
-  I5   90.0  GREEN   Decline Promotion That Requires Values Compromise   flags: none
-  D1   88.3  GREEN   Give 10% to Effective Charity                       flags: none
-  A3   87.5  AMBER   Transition to Employee Ownership                    flags: compliance
-  D2   87.5  GREEN   Choose Non-Profit Career Over Corporate             flags: none
-  D9   87.5  GREEN   Pro-Bono Professional Services                      flags: none
-  H1   87.5  GREEN   Sincere Apology (Environment NOT Relevant)          flags: none
-  A1   86.2  AMBER   Voluntary Renewable Energy Switch                   flags: fairness, transparency, ethical-framework
-  D5   86.2  GREEN   Switch to Ethical Consumption                       flags: none
-  A6   85.0  AMBER   Community Profit Sharing                            flags: transparency, ethical-framework, compliance
-  A8   85.0  AMBER   Above-Minimum Parental Leave                        flags: transparency, ethical-framework, compliance
-  G1   85.0  GREEN   Choose Breakfast Cereal                             flags: none
-  G3   85.0  GREEN   Choose Paint Colour for Bedroom                     flags: none
-  I1   85.0  AMBER   Choose Ethical Exit vs. Private Equity              flags: transparency, compliance
-
-  Highest: D8 (Return Wallet) = 100.0 — a perfect ethical score.
-  All 11 decisions at 90+ involve integrity, transparency, or service to others.
-  Filter correctly recognizes and rewards genuinely ethical behavior.
-
-===========================================================================
-  3. LOWEST SCORES (RED, clearly unethical)
-===========================================================================
-
-  B1    5.0  Price Fixing Agreement                              RED flags: fairness, transparency, ethical-framework, compliance
-  B2    5.0  Systematic Age Discrimination in Hiring             RED flags: fairness, transparency, ethical-framework, compliance
-  B3    5.0  Illegal Waste Dumping                               RED flags: environmental, fairness, transparency, ethical-framework, compliance
-  E2    5.0  Spread Harmful Rumours About Colleague              RED flags: fairness, transparency, conscious-leadership, ethical-framework
-  E3    5.0  Submit Colleague's Work as Own                      RED flags: fairness, transparency, conscious-leadership, ethical-framework
-  E4    5.0  Ghost Long-Term Partner                             RED flags: fairness, transparency, conscious-leadership, ethical-framework
-  B4    6.2  Mandatory Arbitration for Harassment Claims         RED flags: fairness, transparency, ethical-framework, compliance
-  B5    6.2  Quarterly Earnings Manipulation                     RED flags: fairness, transparency, ethical-framework, compliance
-  E1    6.2  Shoplift from Local Business                        RED flags: fairness, transparency, conscious-leadership, ethical-framework
-  E5    6.2  Fabricate Resume Credentials                        RED flags: fairness, transparency, conscious-leadership, ethical-framework
-
-  10 decisions score below 10 — all involve deliberate harm, exploitation, or dishonesty.
-  Filter correctly rejects: price fixing, discrimination, dumping, harassment cover-up.
-
-===========================================================================
-  4. AMBER BORDERLINE DECISIONS
-===========================================================================
-
-  A3   87.5  Transition to Employee Ownership                    flags: compliance
-  A1   86.2  Voluntary Renewable Energy Switch                   flags: fairness, transparency, ethical-framework
-  A6   85.0  Community Profit Sharing                            flags: transparency, ethical-framework, compliance
-  A8   85.0  Above-Minimum Parental Leave                        flags: transparency, ethical-framework, compliance
-  I1   85.0  Choose Ethical Exit vs. Private Equity              flags: transparency, compliance
-  A7   84.0  Reject Fossil Fuel Contract on Principle            flags: fairness, transparency, compliance
-  I4   84.0  Lobby for Stronger Industry Regulation              flags: fairness, transparency, ethical-framework, compliance
-  I2   75.0  Fair Family Business Succession                     flags: fairness, transparency, ethical-framework
-  F5   73.8  Confront Friend About Partner's Infidelity          flags: fairness, conscious-leadership, ethical-framework
-  F2   68.3  Go No-Contact with Toxic Parent                     flags: fairness, transparency, ethical-framework
-  F3   66.7  Luxury Vacation with High Carbon Footprint          flags: fairness, transparency, ethical-framework
-  F1   60.0  White Lie About Friend's Cooking                    flags: fairness, conscious-leadership, ethical-framework, transparency
-  F6   60.0  Call in Sick for Mental Health Day                  flags: fairness, transparency, ethical-framework
-  F4   52.5  Send Children to Private School                     flags: fairness, transparency, ethical-framework, conscious-leadership
-
-  14 decisions scored AMBER. These are genuine ethical tensions:
-  - Corporate: balancing profit vs. people (offshoring, layoffs, bonuses)
-  - Personal: honesty vs. kindness (white lie), self-care vs. rules (mental health day)
-  - Family: fairness vs. practicality (inheritance, school choice, toxic parent boundaries)
-  The filter correctly identifies these as requiring human judgment.
+ID   Decision  Score   Category               Constitution          Enabled
+---- --------- ------- --------------------- --------------------- ---------------------------
+A1   AMBER     86.2  corporate-ethical     corporate-governance  environmental, fairness, transparency, ethical-framework
+A2   GREEN     90.0  corporate-ethical     corporate-governance  fairness, transparency, ethical-framework, compliance
+A3   AMBER     87.5  corporate-ethical     corporate-governance  fairness, transparency, ethical-framework, compliance
+A4   GREEN     90.0  corporate-ethical     corporate-governance  fairness, transparency, ethical-framework, compliance
+A5   GREEN     91.2  corporate-ethical     corporate-governance  environmental, fairness, transparency, ethical-framework
+A6   AMBER     85.0  corporate-ethical     corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+A7   AMBER     84.0  corporate-ethical     corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+A8   AMBER     85.0  corporate-ethical     corporate-governance  fairness, transparency, ethical-framework, compliance
+B1   RED        5.0  corporate-unethical   corporate-governance  fairness, transparency, ethical-framework, compliance
+B2   RED        5.0  corporate-unethical   corporate-governance  fairness, transparency, ethical-framework, compliance
+B3   RED        5.0  corporate-unethical   corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+B4   RED        6.2  corporate-unethical   corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+B5   RED        6.2  corporate-unethical   corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+C1   RED       43.3  corporate-borderline  corporate-governance  fairness, transparency, ethical-framework
+C2   RED       53.8  corporate-borderline  corporate-governance  fairness, transparency, ethical-framework, compliance
+C3   RED       52.5  corporate-borderline  corporate-governance  fairness, transparency, ethical-framework, compliance
+C4   RED       42.5  corporate-borderline  corporate-governance  fairness, transparency, ethical-framework, compliance
+C5   RED       38.3  corporate-borderline  corporate-governance  environmental, fairness, transparency, ethical-framework
+D1   GREEN     88.3  personal-ethical      personal-reflection   fairness, transparency, ethical-framework
+D10  GREEN     95.0  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D2   GREEN     87.5  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D3   GREEN     95.0  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D4   GREEN     92.5  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D5   GREEN     86.2  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D6   GREEN     92.5  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+D7   GREEN     83.3  personal-ethical      personal-reflection   fairness, transparency, ethical-framework
+D8   GREEN    100.0  personal-ethical      personal-reflection   fairness, transparency, ethical-framework
+D9   GREEN     87.5  personal-ethical      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+E1   RED        6.2  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+E2   RED        5.0  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+E3   RED        5.0  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+E4   RED        5.0  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+E5   RED        6.2  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F1   AMBER     60.0  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F2   AMBER     68.3  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
+F3   AMBER     66.7  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
+F4   AMBER     52.5  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F5   AMBER     73.8  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F6   AMBER     60.0  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
+G1   GREEN     85.0  everyday-trivial      personal-reflection   ethical-framework
+G2   GREEN     90.0  everyday-trivial      personal-reflection   fairness, conscious-leadership, ethical-framework
+G3   GREEN     85.0  everyday-trivial      personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+G4   GREEN     80.0  everyday-trivial      personal-reflection   fairness, transparency, ethical-framework
+G5   GREEN     80.0  everyday-trivial      personal-reflection   fairness, conscious-leadership, ethical-framework
+H1   GREEN     87.5  relevance-test        personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+H2   GREEN     81.2  relevance-test        personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+H3   GREEN     80.0  relevance-test        personal-reflection   transparency, conscious-leadership, ethical-framework
+I1   AMBER     85.0  hybrid                corporate-governance  fairness, transparency, ethical-framework, compliance
+I2   AMBER     75.0  hybrid                corporate-governance  environmental, fairness, transparency, ethical-framework
+I3   GREEN     93.8  hybrid                corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+I4   AMBER     84.0  hybrid                corporate-governance  environmental, fairness, transparency, ethical-framework, compliance
+I5   GREEN     90.0  hybrid                personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 
 ===========================================================================
-  5. CONSTITUTION EFFECT ON SCORING
+  HIGHEST SCORES (GREEN 85+)
 ===========================================================================
 
-  Corporate governance (strict) requires >89 for GREEN.
-  Some clearly ethical corporate decisions score 84-88 and get AMBER despite being ethical.
-  This is by design — the strict constitution demands excellence, not adequacy.
-
-  Examples hitting the strict boundary:
-  - A1 Renewable Energy: 86.2 (AMBER, needs 89)
-  - A3 Employee Ownership: 87.5 (AMBER, needs 89)
-  - A7 Reject Fossil Fuel: 84.0 (AMBER, needs 89)
-
-  With moderate constitution (GREEN >79), all of these would be GREEN.
-  The constitution selector lets users choose their rigor.
+  D8   100.0  GREEN  Return Wallet with Cash Intact
+  D3    95.0  GREEN  Report Workplace Harassment
+  D10   95.0  GREEN  Full Apology and Amends for Past Mistake
+  I3    93.8  GREEN  Internal Whistleblowing on Safety Violations
+  D4    92.5  GREEN  Regular Support for Elderly Neighbour
+  D6    92.5  GREEN  Collaborative Family Care Decision
+  A5    91.2  GREEN  Full Product Ingredient Transparency
+  A2    90.0  GREEN  Pay Equity Transparency
+  A4    90.0  GREEN  Supply Chain Human Rights Remediation
+  G2    90.0  GREEN  Choose Evening Movie
+  I5    90.0  GREEN  Decline Promotion That Requires Values Compromise
+  D1    88.3  GREEN  Give 10% to Effective Charity
+  D2    87.5  GREEN  Choose Non-Profit Career Over Corporate
+  D9    87.5  GREEN  Pro-Bono Professional Services
+  H1    87.5  GREEN  Sincere Apology (Environment NOT Relevant)
+  D5    86.2  GREEN  Switch to Ethical Consumption
+  G1    85.0  GREEN  Choose Breakfast Cereal
+  G3    85.0  GREEN  Choose Paint Colour for Bedroom
 
 ===========================================================================
-  6. ARCHITECTURAL IMPROVEMENT: MODULE RELEVANCE
+  LOWEST SCORES (RED)
 ===========================================================================
 
-  Original design (v1): All enabled modules always fire, regardless of context.
-  This meant a personal decision about apologizing would check environmental impact.
+  B1     5.0  RED    Price Fixing Agreement
+  B2     5.0  RED    Systematic Age Discrimination in Hiring
+  B3     5.0  RED    Illegal Waste Dumping
+  E2     5.0  RED    Spread Harmful Rumours About Colleague
+  E3     5.0  RED    Submit Colleague's Work as Own
+  E4     5.0  RED    Ghost Long-Term Partner
+  B4     6.2  RED    Mandatory Arbitration for Harassment Claims
+  B5     6.2  RED    Quarterly Earnings Manipulation
+  E1     6.2  RED    Shoplift from Local Business
+  E5     6.2  RED    Fabricate Resume Credentials
 
-  Updated design (v2): Each module declares its relevance conditions.
-  Before scoring, the engine checks if the module applies to the decision context.
-  - Environmental: keyword-based (resources, energy, waste, transport, etc.)
-  - Compliance: keyword-based (legal, regulation, certification, etc.)
-  - Fairness: fires for all decisions affecting others; skipped for purely personal
-  - Transparency: fires for all non-trivial decisions; skipped for trivial preferences
-  - Conscious Leadership: fires when values/relationships/ethics keywords present
-  - Ethical Framework: always fires (the meta-ethical lens)
+===========================================================================
+  AMBER (FLAG FOR HUMAN JUDGMENT)
+===========================================================================
 
-  This prevents 'module pollution' — irrelevant concerns inflating or deflating scores.
-  A purely personal decision correctly only evaluates what's relevant.
+  A3    87.5  AMBER  Transition to Employee Ownership
+  A1    86.2  AMBER  Voluntary Renewable Energy Switch
+  A6    85.0  AMBER  Community Profit Sharing
+  A8    85.0  AMBER  Above-Minimum Parental Leave
+  I1    85.0  AMBER  Choose Ethical Exit vs. Private Equity
+  A7    84.0  AMBER  Reject Fossil Fuel Contract on Principle
+  I4    84.0  AMBER  Lobby for Stronger Industry Regulation
+  I2    75.0  AMBER  Fair Family Business Succession
+  F5    73.8  AMBER  Confront Friend About Partner's Infidelity
+  F2    68.3  AMBER  Go No-Contact with Toxic Parent
+  F3    66.7  AMBER  Luxury Vacation with High Carbon Footprint
+  F1    60.0  AMBER  White Lie About Friend's Cooking
+  F6    60.0  AMBER  Call in Sick for Mental Health Day
+  F4    52.5  AMBER  Send Children to Private School
 
 ===========================================================================
   VERDICT
 ===========================================================================
 
-  THE ETHICS FILTER v2 IS: PRODUCTION-READY
-
-  52 scenarios across 9 categories. Full score range 5.0 - 100.0.
-  Module relevance working correctly. Irrelevant modules excluded.
+  52 scenarios across 9 categories.
   Genuinely ethical decisions score highly (85-100).
   Clearly unethical decisions score low (5-10).
-  Borderline decisions correctly flagged for human judgment.
+  Borderline decisions are flagged AMBER for human judgment.
+  Distribution: GREEN 23 / AMBER 14 / RED 15.
 
-  Score distribution:
-    GREEN (80-100): 23  — ethical decisions correctly recognized
-    AMBER (50-79):  14  — tensions flagged for human input
-    RED (0-49):     15  — unethical decisions correctly blocked
-
-  11 decisions scored 90+, demonstrating the filter can recognize
-  and reward genuinely ethical behavior, not just catch the bad.
-
-  The filter is ready for real-world testing with actual decision-makers.
-  Module relevance ensures no decision is evaluated against irrelevant criteria.
-  Constitution flexibility lets users set their own rigor level.
+  Expected verdicts are pinned by tests/test_scenarios.py — run `uv run pytest`
+  to verify the engine still matches this report.
 
 ===========================================================================
   END OF REPORT
   Evaluations: 52
-  Generated: 2026-06-09 23:52
 ===========================================================================

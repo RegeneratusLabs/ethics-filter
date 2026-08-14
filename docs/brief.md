@@ -6,15 +6,15 @@ A **universal ethics filter** that any AI agent — running inside a corporation
 
 Not "ethics for ethical businesses." **Ethics for everyone who wants to be on the right side of AI.**
 
-Imagine Claude, ChatGPT, or any AI assistant running this filter before it makes a decision on your behalf. Businesses from sole traders to multinationals. Individuals making purchasing decisions, career moves, family choices. All guided by the same structured ethical reasoning.
+Imagine Claude, ChatGPT, or any AI assistant running this filter before it makes a decision on your behalf — for businesses from sole traders to multinationals, and for individuals making purchasing decisions, career moves, or family choices. All guided by the same structured ethical reasoning.
 
-The skillset is not theoretical. It's synthesised from decades of real human frameworks: B Corp standards, Markkula Center ethical decision-making, Conscious Leadership, systems thinking frameworks, and more.
+The skillset is not theoretical. It is synthesised from decades of real human frameworks: B Corp standards, Markkula Center ethical decision-making, Conscious Leadership, systems thinking frameworks, and more.
 
 ---
 
 ## Where This Comes From (The Research)
 
-Every module is grounded in established frameworks, not vibes:
+Every module is grounded in established frameworks:
 
 | Framework | Source | What It Provides |
 |---|---|---|
@@ -44,11 +44,11 @@ Every module is grounded in established frameworks, not vibes:
 │   2. STAKEHOLDER MAPPING — who is affected?           │
 │   3. MODULE EVALUATION — run enabled modules          │
 │   4. CONFLICT RESOLUTION — harmonise module outputs   │
-│   5. DECISION — ✅ / ⚠️ / 🛑                          │
+│   5. DECISION — Proceed / Flag / Blocked              │
 │   6. AUDIT LOG — why the decision was made            │
 └──────────────────┬───────────────────────────────────┘
                    ▼
-         ✅ Proceed / ⚠️ Flag / 🛑 Blocked
+         Proceed / Flag / Blocked
          ↓                     ↓
     Corporate audit trail    Personal reflection log
     Board reporting          Journal / learning
@@ -75,7 +75,7 @@ Every module is grounded in established frameworks, not vibes:
 
 ## The Modules
 
-### Module 1: 🌏 Environmental Stewardship
+### Module 1: Environmental Stewardship
 **Based on:** B Corp Environment, ESG, Triple Bottom Line, IFOAM Ecology principle
 
 Questions:
@@ -86,7 +86,7 @@ Questions:
 - Does it avoid harm to biodiversity and ecosystems?
 - Does it consider the full lifecycle from source to end-of-life?
 
-### Module 2: 🤝 Fairness & Stakeholder Impact
+### Module 2: Fairness & Stakeholder Impact
 **Based on:** B Corp Workers + Community, IFOAM Fairness, Conscious Capitalism
 
 Questions:
@@ -97,7 +97,7 @@ Questions:
 - Does this support the business's stated purpose beyond profit?
 - Is anyone being exploited or taken advantage of?
 
-### Module 3: 🔓 Transparency & Accountability
+### Module 3: Transparency & Accountability
 **Based on:** B Corp Governance, F-A-T-H-E-R Leadership, Markkula Publicity Test
 
 Questions:
@@ -108,7 +108,7 @@ Questions:
 - Is there any conflict of interest?
 - Would this stand up to scrutiny?
 
-### Module 4: 🧘 Conscious Leadership & Values Alignment
+### Module 4: Conscious Leadership & Values Alignment
 **Based on:** Conscious Leadership 15 Commitments, Values-Based Leadership, Ethical Leadership
 
 Questions:
@@ -119,7 +119,7 @@ Questions:
 - Would this decision be made if nobody was watching?
 - Does this reflect the kind of business the owner wants to be?
 
-### Module 5: ⚖️ Ethical Decision Framework
+### Module 5: Ethical Decision Framework
 **Based on:** Markkula Center 5-Step Framework, 7-Step Model, IDEA Framework, IFOAM Care principle
 
 Questions:
@@ -134,7 +134,7 @@ Questions:
   - **Virtue**: does it reflect integrity and character?
 - Can I defend this choice? Would I advise someone else to do it?
 
-### Module 6: 📋 Compliance & Certification Guard
+### Module 6: Compliance & Certification Guard
 **Based on:** Certification standards generally, legal compliance, audit requirements
 
 Questions:
@@ -159,12 +159,12 @@ STEP 2: STAKEHOLDER MAPPING
 
 STEP 3: MODULE EVALUATION
   └─ Run each enabled module in parallel:
-      ├─ Module 1: Environmental Stewardship 🟢
-      ├─ Module 2: Fairness & Stakeholder Impact 🟢
-      ├─ Module 3: Transparency & Accountability 🟢
-      ├─ Module 4: Conscious Leadership 🟢
-      ├─ Module 5: Ethical Framework 🟢
-      └─ Module 6: Compliance Guard 🟢
+      ├─ Module 1: Environmental Stewardship
+      ├─ Module 2: Fairness & Stakeholder Impact
+      ├─ Module 3: Transparency & Accountability
+      ├─ Module 4: Conscious Leadership
+      ├─ Module 5: Ethical Framework
+      └─ Module 6: Compliance Guard
 
 STEP 4: CONFLICT RESOLUTION
   └─ If modules disagree, the engine:
@@ -173,9 +173,9 @@ STEP 4: CONFLICT RESOLUTION
       └─ Escalates to human if threshold exceeded
 
 STEP 5: DECISION
-  └─ ✅ GREEN (score 80-100): Proceed, log rationale
-  └─ ⚠️ AMBER (score 50-79): Proceed with caution, flag to human, log flags
-  └─ 🛑 RED (score <50): Block, escalate to human, full explanation
+  └─ GREEN (score 80-100): Proceed, log rationale
+  └─ AMBER (score 50-79): Proceed with caution, flag to human, log flags
+  └─ RED (score <50): Block, escalate to human, full explanation
 
 STEP 6: AUDIT
   └─ Every decision stored with:
@@ -249,8 +249,6 @@ A UI where anyone configures their own ethics constitution:
 
 ## The Bigger Picture (After This Sprint)
 
-Once the skillset exists and is proven inside Hermes and other frameworks, it becomes the ethical conscience layer for *any* AI agent interacting with the world. The universal ethics filter that every AI — corporate, personal, commercial — uses to ensure its decisions land on the right side of history.
-
-Businesses plug it into their procurement, hiring, and compliance pipelines. Individuals plug it into their personal AI assistants. Claude, ChatGPT, and every other agent runs decisions through it by default.
+Once the skillset exists and is proven inside Hermes and other frameworks, it becomes the ethical conscience layer for *any* AI agent interacting with the world — the universal filter every AI, corporate or personal, uses to ensure its decisions land on the right side of history. Businesses plug it into procurement, hiring, and compliance pipelines; individuals plug it into their personal assistants; Claude, ChatGPT, and every other agent run decisions through it by default.
 
 That's the long game. But first we build something that works, that anyone can use, and that proves the model.

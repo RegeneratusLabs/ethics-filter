@@ -1,19 +1,40 @@
 [project]
 name = "ethics-filter"
-version = "0.1.0"
-description = "Universal Ethics Evaluation Engine — evaluate any decision through 6 structured ethical modules"
+version = "1.0.0"
+description = "Universal ethics evaluation engine — evaluate any decision through 6 structured ethical modules"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "Ethics Filter Contributors" }]
-
-dependencies = [
-    "mcp>=1.0.0",
+authors = [{ name = "Regeneratus Labs" }]
+keywords = ["ethics", "decision-making", "governance", "agent", "mcp", "compliance"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
+dependencies = []
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2.0"]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+ethics-filter = "ethics_filter.cli:main"
+ethics-filter-mcp = "ethics_filter.mcp_server:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[project.scripts]
-ethics-filter-mcp = "ethics_filter.mcp_server:main"
+[tool.hatch.build.targets.wheel]
+packages = ["ethics_filter"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

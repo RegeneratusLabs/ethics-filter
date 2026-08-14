@@ -10,13 +10,13 @@ metadata:
     tags: [ethics, decision-framework, governance, compliance, values]
     related_skills: [ethics-skillset-architecture, deep-research]
 linked_files:
-  - ethics_filter/modules/environmental.md
-  - ethics_filter/modules/fairness.md
-  - ethics_filter/modules/transparency.md
-  - ethics_filter/modules/conscious-leadership.md
-  - ethics_filter/modules/ethical-framework.md
-  - ethics_filter/modules/compliance.md
-  - ethics_filter/constitution/templates.json
+  - modules/environmental.md
+  - modules/fairness.md
+  - modules/transparency.md
+  - modules/conscious-leadership.md
+  - modules/ethical-framework.md
+  - modules/compliance.md
+  - constitution/templates.json
   - references/ethics-frameworks.md
   - references/testing-methodology.md
   - references/agent-baseline-testing.md
@@ -79,18 +79,18 @@ Relevance is keyword-based and deliberately conservative: the ethical-framework 
 
 | Module | File | Core question |
 |---|---|---|
-| Environmental | `ethics_filter/modules/environmental.md` | What is the impact on the natural world? |
-| Fairness | `ethics_filter/modules/fairness.md` | Who is treated fairly or unfairly? |
-| Transparency | `ethics_filter/modules/transparency.md` | Would you publish this decision? |
-| Conscious Leadership | `ethics_filter/modules/conscious-leadership.md` | Is this from above or below the line? |
-| Ethical Framework | `ethics_filter/modules/ethical-framework.md` | What would each ethical lens say? |
-| Compliance | `ethics_filter/modules/compliance.md` | Does this breach any standard or law? |
+| Environmental | `modules/environmental.md` | What is the impact on the natural world? |
+| Fairness | `modules/fairness.md` | Who is treated fairly or unfairly? |
+| Transparency | `modules/transparency.md` | Would you publish this decision? |
+| Conscious Leadership | `modules/conscious-leadership.md` | Is this from above or below the line? |
+| Ethical Framework | `modules/ethical-framework.md` | What would each ethical lens say? |
+| Compliance | `modules/compliance.md` | Does this breach any standard or law? |
 
 Each module file contains its criteria, scoring rubric, questions, and edge cases, grounded in established frameworks (B Corp, IFOAM, Markkula Center, Conscious Capitalism, F-A-T-H-E-R).
 
 ## Constitution Configuration
 
-A "constitution" is the set of enabled modules plus a strictness level. Presets live in `ethics_filter/constitution/templates.json`:
+A "constitution" is the set of enabled modules plus a strictness level. Presets live in `constitution/templates.json`:
 
 | Preset | Use case | Strictness |
 |---|---|---|

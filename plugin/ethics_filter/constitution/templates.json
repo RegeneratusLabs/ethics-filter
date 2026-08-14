@@ -1,0 +1,99 @@
+{
+  "presets": {
+    "personal-reflection": {
+      "name": "Personal Reflection",
+      "description": "For individuals making significant life decisions — career, relationships, purchases, ethics",
+      "modules": {
+        "environmental": false,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": true,
+        "ethical-framework": true,
+        "compliance": false
+      },
+      "strictness": "moderate"
+    },
+    "small-business-ethical": {
+      "name": "Small Ethical Business",
+      "description": "For small to medium enterprises that want to operate with integrity",
+      "modules": {
+        "environmental": true,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": true,
+        "ethical-framework": true,
+        "compliance": true
+      },
+      "strictness": "moderate"
+    },
+    "corporate-governance": {
+      "name": "Corporate Governance",
+      "description": "For larger organizations embedding ethics into decision-making pipelines",
+      "modules": {
+        "environmental": true,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": false,
+        "ethical-framework": true,
+        "compliance": true
+      },
+      "strictness": "strict"
+    },
+    "startup-quick": {
+      "name": "Startup Quick Check",
+      "description": "For early-stage startups that need a lightweight ethics check without heavy compliance focus",
+      "modules": {
+        "environmental": true,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": true,
+        "ethical-framework": false,
+        "compliance": false
+      },
+      "strictness": "relaxed"
+    },
+    "maximalist": {
+      "name": "Maximalist (All Modules, Strict)",
+      "description": "Full ethics filter at maximum strictness — for decisions with high stakes",
+      "modules": {
+        "environmental": true,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": true,
+        "ethical-framework": true,
+        "compliance": true
+      },
+      "strictness": "strict"
+    },
+    "minimal-safe": {
+      "name": "Minimal Safe Baseline",
+      "description": "Just the essentials — fairness, transparency, and compliance",
+      "modules": {
+        "environmental": false,
+        "fairness": true,
+        "transparency": true,
+        "conscious-leadership": false,
+        "ethical-framework": false,
+        "compliance": true
+      },
+      "strictness": "moderate"
+    }
+  },
+  "strictness_levels": {
+    "relaxed": {
+      "red_threshold": 30,
+      "amber_min": 30,
+      "green_threshold": 70
+    },
+    "moderate": {
+      "red_threshold": 50,
+      "amber_min": 50,
+      "green_threshold": 80
+    },
+    "strict": {
+      "red_threshold": 70,
+      "amber_min": 70,
+      "green_threshold": 90
+    }
+  }
+}
