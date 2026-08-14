@@ -1,3 +1,5 @@
 name: ethics-filter
 version: 1.0.0
 description: "Universal ethics evaluation engine — bundled skill, /ethics command, and ethics_evaluate tool"
+provides_tools:
+  - ethics_evaluate

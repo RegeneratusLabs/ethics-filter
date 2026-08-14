@@ -173,7 +173,8 @@ def _format_readable(data: dict) -> str:
 
 
 def register(ctx) -> None:
-    ctx.register_skill("ethics-filter", str(SKILL_DIR / "SKILL.md"))
+    # The runtime calls .exists() on the skill path — pass a Path, not a str.
+    ctx.register_skill("ethics-filter", SKILL_DIR / "SKILL.md")
 
     def handle_ethics_command(raw_args: str) -> str:
         action, context, constitution = _parse_command_args(raw_args)

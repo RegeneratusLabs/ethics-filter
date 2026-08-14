@@ -63,7 +63,9 @@ class TestRegistration:
         names = [name for name, _ in ctx.skills]
         assert "ethics-filter" in names
         path = dict(ctx.skills)["ethics-filter"]
-        assert Path(path).exists()
+        # The runtime calls .exists() on the path — it must be a Path, not str.
+        assert isinstance(path, Path)
+        assert path.exists()
 
     def test_registers_command(self):
         ctx = make_ctx()
