@@ -105,8 +105,16 @@ def _evaluate_to_dict(ctx, action, context, constitution, scores, reasoning=""):
     complete = getattr(llm, "complete_structured", None) if llm else None
     if complete is not None:
         try:
-            out = complete(prompt=brief["prompt"], schema=brief["json_schema"])
-            text = out if isinstance(out, str) else json.dumps(out)
+            # Verified against agent/plugin_llm.py (Hermes source):
+            # complete_structured(*, instructions, input, json_schema=...)
+            # returns PluginLlmStructuredResult with .parsed (dict) / .text.
+            out = complete(
+                instructions=brief["prompt"],
+                input=[{"type": "text", "text": f"Decision to evaluate: {action}"}],
+                json_schema=brief["json_schema"],
+            )
+            raw = out.parsed if getattr(out, "parsed", None) is not None else out.text
+            text = raw if isinstance(raw, str) else json.dumps(raw)
             result = parse_evaluation_response(
                 text, action, context, constitution, reasoning=reasoning
             )

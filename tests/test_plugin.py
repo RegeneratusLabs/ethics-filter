@@ -23,12 +23,28 @@ def _load_plugin():
 PLUGIN = _load_plugin()
 
 
+class FakeStructuredResult:
+    """Duck-typed PluginLlmStructuredResult: .parsed (dict) + .text."""
+
+    def __init__(self, parsed=None, text=""):
+        self.parsed = parsed
+        self.text = text
+
+
 class MockLLM:
     def __init__(self, response):
         self.response = response
+        self.last_kwargs = None
 
-    def complete_structured(self, prompt=None, schema=None, **kwargs):
-        return json.dumps(self.response)
+    def complete_structured(self, instructions=None, input=None, json_schema=None, **kwargs):
+        self.last_kwargs = {
+            "instructions": instructions,
+            "input": input,
+            "json_schema": json_schema,
+        }
+        return FakeStructuredResult(
+            parsed=self.response, text=json.dumps(self.response)
+        )
 
 
 class MockCtx:
@@ -129,6 +145,10 @@ class TestToolHandler:
         assert data["decision"] == "green"
         assert data["overall_score"] == pytest.approx(87.666, abs=0.01)
         assert len(data["module_results"]) == 3
+        # The host API is complete_structured(instructions, input, json_schema).
+        assert llm.last_kwargs["json_schema"]["type"] == "object"
+        assert "Publish salary bands" in llm.last_kwargs["instructions"]
+        assert llm.last_kwargs["input"][0]["type"] == "text"
 
     def test_without_scores_and_no_llm_returns_brief(self):
         ctx = make_ctx(llm=None)
