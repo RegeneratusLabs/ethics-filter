@@ -157,21 +157,25 @@ def _evaluate_to_dict(ctx, action, context, constitution, scores, auto_score=Fal
 
 
 def _parse_command_args(raw_args: str):
-    """Parse /ethics args: the action plus optional --context/--constitution/--auto-score."""
+    """Parse /ethics args: action + optional --context/--constitution/--brief.
+
+    /ethics returns a scored VERDICT by default. --brief returns the evaluation
+    worksheet instead (no model call).
+    """
     context = ""
     constitution = "small-business-ethical"
-    auto_score = False
+    auto_score = True  # /ethics gives a verdict by default
     ctx_match = re.search(r"--context\s+\"([^\"]+)\"", raw_args)
     if ctx_match:
         context = ctx_match.group(1)
     con_match = re.search(r"--constitution\s+(\S+)", raw_args)
     if con_match:
         constitution = con_match.group(1)
-    if re.search(r"--auto-score", raw_args):
-        auto_score = True
+    if re.search(r"--brief", raw_args):
+        auto_score = False
     action = re.sub(r"--context\s+\"[^\"]*\"", "", raw_args)
     action = re.sub(r"--constitution\s+\S+", "", action)
-    action = re.sub(r"--auto-score", "", action).strip()
+    action = re.sub(r"--brief", "", action).strip()
     return action, context, constitution, auto_score
 
 
@@ -189,9 +193,9 @@ def _format_readable(data: dict) -> str:
             f"Thresholds: RED < {th.get('red_below')}, "
             f"GREEN >= {th.get('green_at_or_above')}",
             "",
-            "To get the audited verdict, call ethics_evaluate with "
+            "To get the audited verdict, pass scores: "
             "{'scores': {...}} for each enabled module.",
-            "Or re-run with --auto-score to have the plugin score it for you.",
+            "Or use --brief to just get the evaluation worksheet.",
         ]
         return "\n".join(lines)
     decision = data.get("decision", "unknown").upper()
@@ -220,11 +224,11 @@ def register(ctx) -> None:
         if not action:
             return (
                 "Usage: /ethics <decision> [--context \"background\"] "
-                "[--constitution <preset>] [--auto-score]\n"
+                "[--constitution <preset>] [--brief]\n"
                 "Example: /ethics \"Approve this supplier\" "
                 "--context \"organic farm, 3 quotes\"\n"
-                "Default returns the evaluation brief; add --auto-score to have "
-                "the plugin score it for you."
+                "Returns a scored verdict by default; add --brief for the "
+                "evaluation worksheet instead."
             )
         data = _evaluate_to_dict(
             ctx, action, context, constitution, scores=None, auto_score=auto_score

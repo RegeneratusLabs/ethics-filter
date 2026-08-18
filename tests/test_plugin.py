@@ -206,7 +206,7 @@ class TestToolHandler:
 
 
 class TestCommandHandler:
-    def test_command_auto_score_returns_verdict(self, tmp_path, monkeypatch):
+    def test_command_returns_verdict_by_default(self, tmp_path, monkeypatch):
         monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
         llm = MockLLM({
             "module_results": [
@@ -221,16 +221,16 @@ class TestCommandHandler:
         ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Publish salary bands --context \"50-person company\" --auto-score")
+        out = handler("Publish salary bands --context \"50-person company\"")
         assert "GREEN" in out
         assert "fairness" in out
         assert "87" in out
 
-    def test_command_default_returns_brief(self):
+    def test_command_brief_flag_returns_worksheet(self):
         ctx = make_ctx(llm=None)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Approve this partnership --context \"local business, three quotes\"")
+        out = handler("Approve this partnership --context \"local business, three quotes\" --brief")
         assert "evaluation brief" in out
         assert "Enabled modules" in out
         assert "fairness" in out
@@ -257,7 +257,7 @@ class TestCommandHandler:
         ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        # auto-score path proves the --context flag was parsed correctly
-        out = handler("Approve this partnership --context \"local business, three quotes\" --auto-score")
+        # default verdict path proves the --context flag was parsed correctly
+        out = handler("Approve this partnership --context \"local business, three quotes\"")
         assert "GREEN" in out
         assert "fairness" in out
