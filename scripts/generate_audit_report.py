@@ -40,7 +40,11 @@ def corpus_verdict(scenario):
     }
     overall = sum(scores.values()) / len(scores)
     thresholds = get_thresholds(cons.strictness)
-    return thresholds.classify(overall), overall, enabled
+    verdict = thresholds.classify(overall)
+    # RED veto (fail-closed): a single module in the block zone blocks.
+    if any(thresholds.classify(s) == "red" for s in scores.values()):
+        verdict = "red"
+    return verdict, overall, enabled
 
 
 def main() -> int:

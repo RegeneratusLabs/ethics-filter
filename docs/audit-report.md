@@ -1,6 +1,6 @@
 ===========================================================================
   ETHICS FILTER — TEST REPORT
-  Generated: 2026-08-14 08:26 UTC
+  Generated: 2026-08-18 10:16 UTC
   Source: tests/scenarios.json (52 scenarios, 9 categories)
   Regenerate: python scripts/generate_audit_report.py
 ===========================================================================
@@ -21,8 +21,8 @@ Categories: 9
 
 Decision distribution:
   GREEN: 23  (44%)
-  AMBER: 14  (27%)
-  RED:   15  (29%)
+  AMBER: 12  (23%)
+  RED:   17  (33%)
 
 Score range: 5.0 - 100.0
 Mean score: 64.8
@@ -75,10 +75,10 @@ E2   RED        5.0  personal-unethical    personal-reflection   fairness, trans
 E3   RED        5.0  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 E4   RED        5.0  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 E5   RED        6.2  personal-unethical    personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
-F1   AMBER     60.0  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F1   RED       60.0  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 F2   AMBER     68.3  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
 F3   AMBER     66.7  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
-F4   AMBER     52.5  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
+F4   RED       52.5  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 F5   AMBER     73.8  personal-borderline   personal-reflection   fairness, transparency, conscious-leadership, ethical-framework
 F6   AMBER     60.0  personal-borderline   personal-reflection   fairness, transparency, ethical-framework
 G1   GREEN     85.0  everyday-trivial      personal-reflection   ethical-framework
@@ -148,9 +148,7 @@ I5   GREEN     90.0  hybrid                personal-reflection   fairness, trans
   F5    73.8  AMBER  Confront Friend About Partner's Infidelity
   F2    68.3  AMBER  Go No-Contact with Toxic Parent
   F3    66.7  AMBER  Luxury Vacation with High Carbon Footprint
-  F1    60.0  AMBER  White Lie About Friend's Cooking
   F6    60.0  AMBER  Call in Sick for Mental Health Day
-  F4    52.5  AMBER  Send Children to Private School
 
 ===========================================================================
   VERDICT
@@ -160,7 +158,7 @@ I5   GREEN     90.0  hybrid                personal-reflection   fairness, trans
   Genuinely ethical decisions score highly (85-100).
   Clearly unethical decisions score low (5-10).
   Borderline decisions are flagged AMBER for human judgment.
-  Distribution: GREEN 23 / AMBER 14 / RED 15.
+  Distribution: GREEN 23 / AMBER 12 / RED 17.
 
   Expected verdicts are pinned by tests/test_scenarios.py — run `uv run pytest`
   to verify the engine still matches this report.

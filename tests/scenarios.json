@@ -666,15 +666,15 @@
     "expected_range": {
       "overall_min": 45,
       "overall_max": 75,
-      "expected_decision": "amber"
+      "expected_decision": "red"
     }
   },
   {
     "id": "F2",
     "category": "personal-borderline",
     "title": "Go No-Contact with Toxic Parent",
-    "action": "Stop all contact with a parent after years of emotional manipulation and boundary violations. Parent is elderly and unwell. Siblings are pressuring for reconciliation. The person has tried therapy, boundaries, mediation — nothing has changed.",
-    "context": "Decades of pattern. Parent has narcissistic traits. Multiple attempts at repair failed. The person's own mental health and young children are being affected. No ill intent — this is a protective decision after exhausting all options.",
+    "action": "Stop all contact with a parent after years of emotional manipulation and boundary violations. Parent is elderly and unwell. Siblings are pressuring for reconciliation. The person has tried therapy, boundaries, mediation \u2014 nothing has changed.",
+    "context": "Decades of pattern. Parent has narcissistic traits. Multiple attempts at repair failed. The person's own mental health and young children are being affected. No ill intent \u2014 this is a protective decision after exhausting all options.",
     "constitution": "personal-reflection",
     "module_scores": {
       "fairness": 70,
@@ -724,7 +724,7 @@
     "expected_range": {
       "overall_min": 35,
       "overall_max": 65,
-      "expected_decision": "amber"
+      "expected_decision": "red"
     }
   },
   {

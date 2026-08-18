@@ -57,7 +57,7 @@ Do not use for:
 2. **Stakeholder mapping** — identify direct, indirect, and systemic stakeholders.
 3. **Module evaluation** — score each *relevant* module (0-100) against its rubric.
 4. **Conflict resolution** — surface tensions when modules disagree materially (spread of 40+ points).
-5. **Decision** — apply strictness thresholds to the mean of relevant module scores.
+5. **Decision** — apply strictness thresholds to the mean of relevant module scores. A single module scoring RED **vetoes** the whole decision to RED (fail-closed — the mean never dilutes a red flag into a pass).
 6. **Audit** — append a permanent JSONL record of every evaluation.
 
 ### Module relevance

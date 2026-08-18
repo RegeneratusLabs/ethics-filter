@@ -41,7 +41,11 @@ def corpus_enabled(scenario):
 
 
 def corpus_verdict(scenario):
-    """Verdict under corpus semantics (enabled modules that have scores)."""
+    """Verdict under corpus semantics (enabled modules that have scores).
+
+    Mirrors the engine: the verdict is the mean-mapped threshold result, with
+    the RED veto — any enabled module scoring RED blocks the whole decision.
+    """
     enabled = corpus_enabled(scenario)
     scores = {
         m: scenario["module_scores"][m]
@@ -51,7 +55,11 @@ def corpus_verdict(scenario):
     overall = sum(scores.values()) / len(scores)
     cons = get_constitution(scenario["constitution"])
     thresholds = get_thresholds(cons.strictness)
-    return thresholds.classify(overall), overall
+    verdict = thresholds.classify(overall)
+    # VETO: a single module in the block zone blocks the decision (fail-closed).
+    if any(thresholds.classify(s) == "red" for s in scores.values()):
+        verdict = "red"
+    return verdict, overall
 
 
 class TestCorpusMetadata:

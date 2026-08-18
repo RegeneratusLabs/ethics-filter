@@ -477,6 +477,12 @@ def evaluate(
     overall = sum(r.score for r in module_results) / len(module_results)
     decision = thresholds.classify(overall)
 
+    # VETO: any enabled module scoring RED blocks the whole decision.
+    # The mean must never dilute a genuine red flag into a pass — one module
+    # in the block zone makes the decision a block, regardless of the average.
+    if any(thresholds.classify(r.score) == "red" for r in module_results):
+        decision = "red"
+
     flags = [r.name for r in module_results if thresholds.classify(r.score) == "red"]
     tensions = _detect_tensions(module_results)
     requires_human = decision == "red" or any(
@@ -626,9 +632,14 @@ Respond ONLY with JSON matching this schema:
 
 Rules:
 - Score every enabled module. Do not skip modules.
+- Anchor each score to a specific rubric band: state which band your score falls
+  in (0-25 severe, 26-50 weak, 51-75 acceptable, 76-100 strong) and the evidence
+  for it. DO NOT default to 70-90 for everything.
+- Be hard on red flags. If any criterion for a module clearly fails, that module
+  must score below the red threshold — a single red module blocks the decision.
 - If modules disagree materially, note the tension in "reasoning".
-- Any module scoring RED means the overall decision must not be GREEN unless
-  the reasoning explains the override. When in doubt, prefer the stricter call.
+- Any module scoring RED blocks the whole decision. When in doubt, prefer the
+  stricter call. This filter is not a rubber stamp; a pass should be earned.
 """
 
     return {
@@ -698,6 +709,11 @@ def parse_evaluation_response(
     ]
     overall = sum(r.score for r in module_results) / len(module_results)
     decision = thresholds.classify(overall)
+
+    # VETO: any enabled module scoring RED blocks the whole decision (fail-closed).
+    if any(thresholds.classify(r.score) == "red" for r in module_results):
+        decision = "red"
+
     flags = [r.name for r in module_results if thresholds.classify(r.score) == "red"]
     tensions = _detect_tensions(module_results)
 
