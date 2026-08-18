@@ -44,9 +44,12 @@ TOOL_SCHEMA = {
         "Evaluate a decision through the Ethics Filter: six ethical modules "
         "(environmental, fairness, transparency, conscious leadership, ethical "
         "framework, compliance), strictness thresholds, tension detection, and "
-        "a permanent audit trail. Returns a scored verdict (GREEN/AMBER/RED) "
-        "with per-module scores and reasoning. When 'scores' is omitted, the "
-        "user's model scores the decision against the module rubrics."
+        "a permanent audit trail. Pass 'scores' to get a scored verdict "
+        "(GREEN/AMBER/RED) computed deterministically. When 'scores' is omitted "
+        "it returns the evaluation brief (enabled modules, thresholds, rubric "
+        "prompt, JSON schema) for the host agent to score inline and reason "
+        "over — so the agent ALWAYS replies. Set auto_score=true to have the "
+        "plugin call the user's model to score instead (slower)."
     ),
     "parameters": {
         "type": "object",
@@ -70,8 +73,16 @@ TOOL_SCHEMA = {
                 "type": "object",
                 "description": (
                     "Optional 0-100 score for every relevant module, e.g. "
-                    '{"fairness": 90, "compliance": 60}. Omit to auto-score '
-                    "with the user's model."
+                    '{"fairness": 90, "compliance": 60}. Provide to get a '
+                    "deterministic verdict + audit record."
+                ),
+            },
+            "auto_score": {
+                "type": "boolean",
+                "description": (
+                    "When scores is omitted and auto_score is true, the plugin "
+                    "asks the user's model to score the decision. Default false "
+                    "(returns the brief for the agent to judge)."
                 ),
             },
         },
@@ -80,12 +91,15 @@ TOOL_SCHEMA = {
 }
 
 
-def _evaluate_to_dict(ctx, action, context, constitution, scores, reasoning=""):
+def _evaluate_to_dict(ctx, action, context, constitution, scores, auto_score=False, reasoning=""):
     """Run the evaluation, returning a JSON-serialisable dict.
 
-    With explicit scores the verdict is computed deterministically. Without
-    scores, the user's model is asked to score the decision (falling back to
-    returning the evaluation brief if that fails).
+    - With explicit ``scores``: deterministic verdict + audit record.
+    - With no scores and ``auto_score=True``: ask the host's model to score.
+    - With no scores and ``auto_score=False`` (default): return the evaluation
+      brief so the HOST AGENT scores inline in its own reply. This is the robust
+      path — no hidden nested LLM call that can stall a turn or lose the
+      response if the client disconnects mid-evaluation.
     """
     if scores:
         try:
@@ -101,32 +115,38 @@ def _evaluate_to_dict(ctx, action, context, constitution, scores, reasoning=""):
             return {"error": str(exc)}
 
     brief = build_evaluation_prompt(action, context, constitution)
-    llm = getattr(ctx, "llm", None)
-    complete = getattr(llm, "complete_structured", None) if llm else None
-    if complete is not None:
-        try:
-            # Verified against agent/plugin_llm.py (Hermes source):
-            # complete_structured(*, instructions, input, json_schema=...)
-            # returns PluginLlmStructuredResult with .parsed (dict) / .text.
-            out = complete(
-                instructions=brief["prompt"],
-                input=[{"type": "text", "text": f"Decision to evaluate: {action}"}],
-                json_schema=brief["json_schema"],
-            )
-            raw = out.parsed if getattr(out, "parsed", None) is not None else out.text
-            text = raw if isinstance(raw, str) else json.dumps(raw)
-            result = parse_evaluation_response(
-                text, action, context, constitution, reasoning=reasoning
-            )
-            return result.to_dict()
-        except Exception as exc:  # noqa: BLE001 — plugin must not crash
-            return {
-                "error": f"LLM evaluation failed: {exc}",
-                "prompt": brief["prompt"],
-            }
+
+    if auto_score:
+        llm = getattr(ctx, "llm", None)
+        complete = getattr(llm, "complete_structured", None) if llm else None
+        if complete is not None:
+            try:
+                out = complete(
+                    instructions=brief["prompt"],
+                    input=[{"type": "text", "text": f"Decision to evaluate: {action}"}],
+                    json_schema=brief["json_schema"],
+                )
+                raw = out.parsed if getattr(out, "parsed", None) is not None else out.text
+                text = raw if isinstance(raw, str) else json.dumps(raw)
+                result = parse_evaluation_response(
+                    text, action, context, constitution, reasoning=reasoning
+                )
+                return result.to_dict()
+            except Exception as exc:  # noqa: BLE001 — plugin must not crash
+                return {
+                    "error": f"LLM evaluation failed: {exc}",
+                    "prompt": brief["prompt"],
+                }
 
     return {
         "status": "scores_required",
+        "instructions": (
+            "Score each enabled module 0-100 against its rubric and deliver the "
+            "verdict in your reply. You may call ethics_evaluate again with "
+            "{'scores': {...}} for the audited verdict."
+        ),
+        "action": brief["action"],
+        "context": brief["context"],
         "constitution": brief["constitution"],
         "strictness": brief["strictness"],
         "enabled_modules": brief["enabled_modules"],
@@ -137,30 +157,41 @@ def _evaluate_to_dict(ctx, action, context, constitution, scores, reasoning=""):
 
 
 def _parse_command_args(raw_args: str):
-    """Parse /ethics args: the action plus optional --context/--constitution."""
+    """Parse /ethics args: the action plus optional --context/--constitution/--auto-score."""
     context = ""
     constitution = "small-business-ethical"
+    auto_score = False
     ctx_match = re.search(r"--context\s+\"([^\"]+)\"", raw_args)
     if ctx_match:
         context = ctx_match.group(1)
     con_match = re.search(r"--constitution\s+(\S+)", raw_args)
     if con_match:
         constitution = con_match.group(1)
+    if re.search(r"--auto-score", raw_args):
+        auto_score = True
     action = re.sub(r"--context\s+\"[^\"]*\"", "", raw_args)
-    action = re.sub(r"--constitution\s+\S+", "", action).strip()
-    return action, context, constitution
+    action = re.sub(r"--constitution\s+\S+", "", action)
+    action = re.sub(r"--auto-score", "", action).strip()
+    return action, context, constitution, auto_score
 
 
 def _format_readable(data: dict) -> str:
     if "error" in data:
         return f"Ethics Filter error: {data['error']}"
     if data.get("status") == "scores_required":
+        th = data.get("thresholds", {})
         lines = [
-            "Ethics Filter — scores required. Provide module scores, e.g.:",
-            f"  /ethics {data['prompt']}",
+            "Ethics Filter — evaluation brief. Score each enabled module 0-100 "
+            "against its rubric and deliver the verdict in your reply.",
+            f"Action: {data.get('action', '')}",
+            f"Constitution: {data.get('constitution', '')} ({data.get('strictness', '')})",
+            f"Enabled modules: {', '.join(data.get('enabled_modules', []))}",
+            f"Thresholds: RED < {th.get('red_below')}, "
+            f"GREEN >= {th.get('green_at_or_above')}",
             "",
-            "Or call ethics_evaluate with scores for every relevant module:",
-            f"  {', '.join(data['enabled_modules'])}",
+            "To get the audited verdict, call ethics_evaluate with "
+            "{'scores': {...}} for each enabled module.",
+            "Or re-run with --auto-score to have the plugin score it for you.",
         ]
         return "\n".join(lines)
     decision = data.get("decision", "unknown").upper()
@@ -185,16 +216,18 @@ def register(ctx) -> None:
     ctx.register_skill("ethics-filter", SKILL_DIR / "SKILL.md")
 
     def handle_ethics_command(raw_args: str) -> str:
-        action, context, constitution = _parse_command_args(raw_args)
+        action, context, constitution, auto_score = _parse_command_args(raw_args)
         if not action:
             return (
                 "Usage: /ethics <decision> [--context \"background\"] "
-                "[--constitution <preset>]\n"
+                "[--constitution <preset>] [--auto-score]\n"
                 "Example: /ethics \"Approve this supplier\" "
-                "--context \"organic farm, 3 quotes\""
+                "--context \"organic farm, 3 quotes\"\n"
+                "Default returns the evaluation brief; add --auto-score to have "
+                "the plugin score it for you."
             )
         data = _evaluate_to_dict(
-            ctx, action, context, constitution, scores=None
+            ctx, action, context, constitution, scores=None, auto_score=auto_score
         )
         return _format_readable(data)
 
@@ -210,7 +243,10 @@ def register(ctx) -> None:
         context = params.get("context", "")
         constitution = params.get("constitution", "small-business-ethical")
         scores = params.get("scores")
-        data = _evaluate_to_dict(ctx, action, context, constitution, scores)
+        auto_score = bool(params.get("auto_score", False))
+        data = _evaluate_to_dict(
+            ctx, action, context, constitution, scores, auto_score=auto_score
+        )
         return json.dumps(data, indent=2, ensure_ascii=False)
 
     ctx.register_tool(

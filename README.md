@@ -102,7 +102,7 @@ Platform-specific setup (Claude Code, Claude Desktop, Cursor, Copilot, Cline, Co
 
 ### Hermes plugin
 
-The repo bundles a Hermes plugin that registers the skill, a `/ethics` slash command, and the `ethics_evaluate` tool (which auto-scores with the user's model when scores are omitted):
+The repo bundles a Hermes plugin that registers the skill, a `/ethics` slash command, and the `ethics_evaluate` tool (returns a fast evaluation brief by default; pass `scores` for a deterministic audited verdict, or `auto_score: true` to have the user's model score it):
 
 ```bash
 hermes plugins install RegeneratusLabs/ethics-filter --enable

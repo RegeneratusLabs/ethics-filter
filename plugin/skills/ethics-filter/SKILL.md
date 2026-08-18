@@ -162,7 +162,7 @@ Tools: `determine_relevant_modules`, `get_module_details`, `list_constitutions`,
 The repo bundles a Hermes plugin (`plugin/`) that registers:
 - the `ethics-filter` skill (loadable as `plugin:ethics-filter`)
 - the `/ethics` slash command
-- the `ethics_evaluate` tool (auto-scores via the user's model when scores are omitted)
+- the `ethics_evaluate` tool (returns a fast evaluation brief by default; pass `scores` for a deterministic audited verdict, or `auto_score: true` to have the user's model score it)
 
 Install with `hermes plugins install RegeneratusLabs/ethics-filter --enable`, or copy `plugin/` into `~/.hermes/plugins/` and run `hermes plugins enable ethics-filter`. See `docs/hermes-integration.md`.
 

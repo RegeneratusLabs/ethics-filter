@@ -58,9 +58,10 @@ The `ethics_evaluate` tool is available to any agent loop. Parameters:
 | `action` | string (required) | The proposed action or decision |
 | `context` | string | Background: stakeholders, constraints, facts |
 | `constitution` | string | Preset: small-business-ethical (default), personal-reflection, corporate-governance, startup-quick, maximalist, minimal-safe |
-| `scores` | object | Optional 0-100 per-module scores. Omit to auto-score with the user's model |
+| `scores` | object | Optional 0-100 per-module scores. Provide to get a deterministic scored verdict + audit record. |
+| `auto_score` | boolean | Only relevant when `scores` is omitted. When true, the plugin asks the user's model to score; when false (default) it returns the evaluation brief. |
 
-When `scores` is omitted, the plugin asks the user's own model to score the decision against the module rubrics (via `ctx.llm.complete_structured`), then the engine computes the verdict deterministically and writes the audit record. If no LLM is available, the tool returns the evaluation brief instead of a verdict.
+When `scores` is omitted the tool returns the evaluation brief (enabled modules, thresholds, rubric prompt, JSON schema) so the **host agent can score inline and always reply** — no hidden nested LLM call that can stall or lose the response if the client disconnects mid-evaluation. Set `auto_score: true` to have the plugin call the user's model to score instead (slower). The `/ethics` command behaves the same; add `--auto-score` to force scoring.
 
 ### Skill
 

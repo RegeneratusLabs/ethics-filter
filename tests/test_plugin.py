@@ -122,7 +122,7 @@ class TestToolHandler:
         assert data["requires_human"] is True
         assert data["overall_score"] == 6.25
 
-    def test_without_scores_uses_llm(self, tmp_path, monkeypatch):
+    def test_auto_score_uses_llm(self, tmp_path, monkeypatch):
         monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
         llm = MockLLM({
             "module_results": [
@@ -140,6 +140,7 @@ class TestToolHandler:
         out = handler({
             "action": "Publish salary bands",
             "context": "50-person company",
+            "auto_score": True,
         })
         data = json.loads(out)
         assert data["decision"] == "green"
@@ -149,6 +150,31 @@ class TestToolHandler:
         assert llm.last_kwargs["json_schema"]["type"] == "object"
         assert "Publish salary bands" in llm.last_kwargs["instructions"]
         assert llm.last_kwargs["input"][0]["type"] == "text"
+
+    def test_default_returns_brief_without_calling_llm(self, tmp_path, monkeypatch):
+        """Default (no scores, auto_score=False) NEVER fires the nested LLM."""
+        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
+        llm = MockLLM({
+            "module_results": [],
+            "overall_score": 99,
+            "decision": "green",
+            "reasoning": "",
+        })
+        ctx = make_ctx(llm=llm)
+        PLUGIN.register(ctx)
+        handler = ctx.tools[0]["handler"]
+        out = handler({
+            "action": "Publish salary bands",
+            "context": "50-person company",
+        })
+        data = json.loads(out)
+        assert data["status"] == "scores_required"
+        assert "prompt" in data
+        assert data["enabled_modules"] == [
+            "fairness", "transparency", "ethical-framework",
+        ]
+        # proof: the mock LLM was never invoked
+        assert llm.last_kwargs is None
 
     def test_without_scores_and_no_llm_returns_brief(self):
         ctx = make_ctx(llm=None)
@@ -180,7 +206,7 @@ class TestToolHandler:
 
 
 class TestCommandHandler:
-    def test_returns_readable_verdict(self, tmp_path, monkeypatch):
+    def test_command_auto_score_returns_verdict(self, tmp_path, monkeypatch):
         monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
         llm = MockLLM({
             "module_results": [
@@ -195,10 +221,19 @@ class TestCommandHandler:
         ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Publish salary bands --context \"50-person company\"")
+        out = handler("Publish salary bands --context \"50-person company\" --auto-score")
         assert "GREEN" in out
         assert "fairness" in out
         assert "87" in out
+
+    def test_command_default_returns_brief(self):
+        ctx = make_ctx(llm=None)
+        PLUGIN.register(ctx)
+        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
+        out = handler("Approve this partnership --context \"local business, three quotes\"")
+        assert "evaluation brief" in out
+        assert "Enabled modules" in out
+        assert "fairness" in out
 
     def test_empty_args_returns_usage(self):
         ctx = make_ctx()
@@ -222,6 +257,7 @@ class TestCommandHandler:
         ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Approve this partnership --context \"local business, three quotes\"")
+        # auto-score path proves the --context flag was parsed correctly
+        out = handler("Approve this partnership --context \"local business, three quotes\" --auto-score")
         assert "GREEN" in out
         assert "fairness" in out
