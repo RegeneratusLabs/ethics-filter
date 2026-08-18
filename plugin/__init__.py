@@ -220,20 +220,31 @@ def register(ctx) -> None:
     ctx.register_skill("ethics-filter", SKILL_DIR / "SKILL.md")
 
     def handle_ethics_command(raw_args: str) -> str:
-        action, context, constitution, auto_score = _parse_command_args(raw_args)
+        action, context, constitution, _brief = _parse_command_args(raw_args)
         if not action:
             return (
                 "Usage: /ethics <decision> [--context \"background\"] "
-                "[--constitution <preset>] [--brief]\n"
+                "[--constitution <preset>]\n"
                 "Example: /ethics \"Approve this supplier\" "
-                "--context \"organic farm, 3 quotes\"\n"
-                "Returns a scored verdict by default; add --brief for the "
-                "evaluation worksheet instead."
+                "--context \"organic farm, 3 quotes\""
             )
-        data = _evaluate_to_dict(
-            ctx, action, context, constitution, scores=None, auto_score=auto_score
+        # Mirror the soul-finder pattern that works on every surface: the slash
+        # command does NOT do the work itself. It injects a kickoff that hands
+        # the evaluation to the agent, which loads the skill + tool and delivers
+        # the verdict in the normal conversation turn. Never blocks the worker,
+        # never shows reasoning-without-a-reply, never returns a bare worksheet.
+        kick = (
+            f"Run the Ethics Filter on this decision and give me a clear verdict.\n\n"
+            f"Decision: {action}\n"
+            f"Context: {context or '(none provided — assume the obvious)'}\n"
+            f"Constitution: {constitution}\n\n"
+            "Load the `plugin:ethics-filter` skill and use the `ethics_evaluate` "
+            "tool to evaluate it. In your reply give: the verdict "
+            "(GREEN/AMBER/RED), the per-module scores, the key reasoning, and "
+            "any red flags or tensions between modules."
         )
-        return _format_readable(data)
+        ctx.inject_message(kick, role="user")
+        return json.dumps({"ok": True})
 
     ctx.register_command(
         "ethics",

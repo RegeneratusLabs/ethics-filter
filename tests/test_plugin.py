@@ -54,6 +54,10 @@ class MockCtx:
         self.skills = []
         self.tools = []
         self.llm = llm
+        self.injected = None
+
+    def inject_message(self, content, role="user", **kwargs):
+        self.injected = (role, content)
 
     def register_command(self, name, handler, description):
         self.commands.append((name, handler, description))
@@ -206,34 +210,29 @@ class TestToolHandler:
 
 
 class TestCommandHandler:
-    def test_command_returns_verdict_by_default(self, tmp_path, monkeypatch):
-        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
-        llm = MockLLM({
-            "module_results": [
-                {"name": "fairness", "score": 90, "rationale": ""},
-                {"name": "transparency", "score": 85, "rationale": ""},
-                {"name": "ethical-framework", "score": 88, "rationale": ""},
-            ],
-            "overall_score": 87.7,
-            "decision": "green",
-            "reasoning": "sound",
-        })
-        ctx = make_ctx(llm=llm)
-        PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Publish salary bands --context \"50-person company\"")
-        assert "GREEN" in out
-        assert "fairness" in out
-        assert "87" in out
-
-    def test_command_brief_flag_returns_worksheet(self):
+    def test_command_injects_kickoff_and_returns_ok(self):
+        """/ethics mirrors soul-finder: inject a kickoff, hand off to the agent."""
         ctx = make_ctx(llm=None)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Approve this partnership --context \"local business, three quotes\" --brief")
-        assert "evaluation brief" in out
-        assert "Enabled modules" in out
-        assert "fairness" in out
+        out = handler("Should I haggle with a poorer car seller?")
+        data = json.loads(out)
+        assert data == {"ok": True}
+        # An agent-facing kickoff was queued, not a static rendered answer.
+        role, kick = ctx.injected
+        assert role == "user"
+        assert "Ethics Filter" in kick
+        assert "Should I haggle with a poorer car seller?" in kick
+        assert "ethics_evaluate" in kick
+
+    def test_command_kickoff_parses_context_and_constitution(self):
+        ctx = make_ctx(llm=None)
+        PLUGIN.register(ctx)
+        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
+        handler("Approve this partnership --context \"local business, three quotes\" --constitution minimal-safe")
+        _, kick = ctx.injected
+        assert "local business, three quotes" in kick
+        assert "minimal-safe" in kick
 
     def test_empty_args_returns_usage(self):
         ctx = make_ctx()
@@ -241,23 +240,3 @@ class TestCommandHandler:
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
         out = handler("")
         assert "Usage:" in out
-
-    def test_parses_context_flag(self, tmp_path, monkeypatch):
-        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
-        llm = MockLLM({
-            "module_results": [
-                {"name": "fairness", "score": 90, "rationale": ""},
-                {"name": "transparency", "score": 85, "rationale": ""},
-                {"name": "ethical-framework", "score": 88, "rationale": ""},
-            ],
-            "overall_score": 87.7,
-            "decision": "green",
-            "reasoning": "",
-        })
-        ctx = make_ctx(llm=llm)
-        PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        # default verdict path proves the --context flag was parsed correctly
-        out = handler("Approve this partnership --context \"local business, three quotes\"")
-        assert "GREEN" in out
-        assert "fairness" in out
