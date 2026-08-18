@@ -220,31 +220,28 @@ def register(ctx) -> None:
     ctx.register_skill("ethics-filter", SKILL_DIR / "SKILL.md")
 
     def handle_ethics_command(raw_args: str) -> str:
-        action, context, constitution, _brief = _parse_command_args(raw_args)
+        action, context, constitution, auto_score = _parse_command_args(raw_args)
         if not action:
             return (
                 "Usage: /ethics <decision> [--context \"background\"] "
-                "[--constitution <preset>]\n"
+                "[--constitution <preset>] [--brief]\n"
                 "Example: /ethics \"Approve this supplier\" "
                 "--context \"organic farm, 3 quotes\""
             )
-        # Mirror the soul-finder pattern that works on every surface: the slash
-        # command does NOT do the work itself. It injects a kickoff that hands
-        # the evaluation to the agent, which loads the skill + tool and delivers
-        # the verdict in the normal conversation turn. Never blocks the worker,
-        # never shows reasoning-without-a-reply, never returns a bare worksheet.
-        kick = (
-            f"Run the Ethics Filter on this decision and give me a clear verdict.\n\n"
-            f"Decision: {action}\n"
-            f"Context: {context or '(none provided — assume the obvious)'}\n"
-            f"Constitution: {constitution}\n\n"
-            "Load the `plugin:ethics-filter` skill and use the `ethics_evaluate` "
-            "tool to evaluate it. In your reply give: the verdict "
-            "(GREEN/AMBER/RED), the per-module scores, the key reasoning, and "
-            "any red flags or tensions between modules."
+        # The desktop slash worker (tui_gateway/slash_worker.py) is a persistent
+        # CLI that runs the handler and captures its RETURN VALUE as the chat
+        # bubble. It does NOT drain inject_message's _pending_input, so a
+        # hand-off that returns only {"ok": true} renders an empty/no-op bubble
+        # on the desktop. The health fix: compute the verdict right here and
+        # return it as the command output, so the user sees the answer inline.
+        # auto_score asks the host model to score against the module rubrics —
+        # the same verified path the ethics_evaluate tool uses (fast, scored,
+        # auditable). --brief returns the worksheet instead (no model call).
+        data = _evaluate_to_dict(
+            ctx, action, context, constitution,
+            scores=None, auto_score=auto_score,
         )
-        ctx.inject_message(kick, role="user")
-        return json.dumps({"ok": True})
+        return _format_readable(data)
 
     ctx.register_command(
         "ethics",

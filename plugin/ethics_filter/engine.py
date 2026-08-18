@@ -463,6 +463,16 @@ def evaluate(
             "then pass them here (or use parse_evaluation_response())."
         )
 
+    # Normalise module-score keys so agents don't trip on underscore vs
+    # hyphen (e.g. {"conscious_leadership": 80} for the canonical
+    # "conscious-leadership"). Unknown keys and original spellings are
+    # preserved so _validate_scores can still raise a precise error.
+    _canon = set(MODULE_NAMES)
+    module_scores = {
+        (k.replace("_", "-") if k.replace("_", "-") in _canon else k): score
+        for k, score in module_scores.items()
+    }
+
     _validate_scores(module_scores, enabled)
 
     module_results = [

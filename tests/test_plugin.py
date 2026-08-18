@@ -210,29 +210,67 @@ class TestToolHandler:
 
 
 class TestCommandHandler:
-    def test_command_injects_kickoff_and_returns_ok(self):
-        """/ethics mirrors soul-finder: inject a kickoff, hand off to the agent."""
-        ctx = make_ctx(llm=None)
+    def test_command_returns_verdict_inline(self, tmp_path, monkeypatch):
+        """The desktop slash worker captures the handler's RETURN VALUE as the
+        chat bubble. /ethics therefore computes and returns the verdict inline
+        (via auto_score) instead of relying on inject_message, which the slash
+        worker never drains (renders an empty/no-op bubble on desktop)."""
+        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
+        llm = MockLLM({
+            "module_results": [
+                {"name": "fairness", "score": 82, "rationale": "equitable"},
+                {"name": "transparency", "score": 78, "rationale": "open"},
+                {"name": "ethical-framework", "score": 80, "rationale": "sound"},
+                {"name": "compliance", "score": 75, "rationale": "ok"},
+            ],
+            "overall_score": 78.8,
+            "decision": "amber",
+            "reasoning": "broadly sound but needs due-diligence verification",
+        })
+        ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Should I haggle with a poorer car seller?")
-        data = json.loads(out)
-        assert data == {"ok": True}
-        # An agent-facing kickoff was queued, not a static rendered answer.
-        role, kick = ctx.injected
-        assert role == "user"
-        assert "Ethics Filter" in kick
-        assert "Should I haggle with a poorer car seller?" in kick
-        assert "ethics_evaluate" in kick
+        out = handler("Should I approve this organic farm supplier?")
+        # The command output IS the rendered verdict — no inject_message.
+        assert "AMBER" in out
+        assert "78.8" in out
+        assert "fairness" in out
+        assert ctx.injected is None
 
-    def test_command_kickoff_parses_context_and_constitution(self):
-        ctx = make_ctx(llm=None)
+    def test_command_parses_context_and_constitution(self, tmp_path, monkeypatch):
+        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
+        llm = MockLLM({
+            "module_results": [
+                {"name": "fairness", "score": 90, "rationale": "fair"},
+                {"name": "transparency", "score": 90, "rationale": "clear"},
+                {"name": "ethical-framework", "score": 90, "rationale": "sound"},
+                {"name": "compliance", "score": 90, "rationale": "compliant"},
+            ],
+            "overall_score": 90,
+            "decision": "green",
+            "reasoning": "clean",
+        })
+        ctx = make_ctx(llm=llm)
         PLUGIN.register(ctx)
         handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        handler("Approve this partnership --context \"local business, three quotes\" --constitution minimal-safe")
-        _, kick = ctx.injected
-        assert "local business, three quotes" in kick
-        assert "minimal-safe" in kick
+        handler('Approve this partnership --context "local business, three quotes" --constitution minimal-safe')
+        # Context and constitution are fed into the evaluation, not a kickoff.
+        assert "local business, three quotes" in llm.last_kwargs["instructions"]
+        assert "Minimal Safe Baseline" in llm.last_kwargs["instructions"]
+        assert ctx.injected is None
+
+    def test_command_brief_flag_returns_worksheet_without_llm(self, tmp_path, monkeypatch):
+        """--brief skips the model call and returns the worksheet (no LLM)."""
+        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
+        llm = MockLLM({})
+        ctx = make_ctx(llm=llm)
+        PLUGIN.register(ctx)
+        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
+        out = handler("Should I approve this supplier? --brief")
+        assert "evaluation brief" in out.lower()
+        assert "Score each enabled module" in out
+        assert llm.last_kwargs is None  # no model call for --brief
+        assert ctx.injected is None
 
     def test_empty_args_returns_usage(self):
         ctx = make_ctx()
