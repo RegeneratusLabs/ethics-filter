@@ -87,10 +87,12 @@ class TestRegistration:
         assert isinstance(path, Path)
         assert path.exists()
 
-    def test_registers_command(self):
+    def test_does_not_register_plugin_command(self):
+        """/ethics must be a SKILL command, not a plugin command — a plugin
+        command would shadow the skill command and run hidden compute."""
         ctx = make_ctx()
         PLUGIN.register(ctx)
-        assert any(name == "ethics" for name, _, _ in ctx.commands)
+        assert not any(name == "ethics" for name, _, _ in ctx.commands)
 
     def test_registers_tool(self):
         ctx = make_ctx()
@@ -210,71 +212,25 @@ class TestToolHandler:
 
 
 class TestCommandHandler:
-    def test_command_returns_verdict_inline(self, tmp_path, monkeypatch):
-        """The desktop slash worker captures the handler's RETURN VALUE as the
-        chat bubble. /ethics therefore computes and returns the verdict inline
-        (via auto_score) instead of relying on inject_message, which the slash
-        worker never drains (renders an empty/no-op bubble on desktop)."""
-        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
-        llm = MockLLM({
-            "module_results": [
-                {"name": "fairness", "score": 82, "rationale": "equitable"},
-                {"name": "transparency", "score": 78, "rationale": "open"},
-                {"name": "ethical-framework", "score": 80, "rationale": "sound"},
-                {"name": "compliance", "score": 75, "rationale": "ok"},
-            ],
-            "overall_score": 78.8,
-            "decision": "amber",
-            "reasoning": "broadly sound but needs due-diligence verification",
-        })
-        ctx = make_ctx(llm=llm)
-        PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Should I approve this organic farm supplier?")
-        # The command output IS the rendered verdict — no inject_message.
-        assert "AMBER" in out
-        assert "78.8" in out
-        assert "fairness" in out
-        assert ctx.injected is None
-
-    def test_command_parses_context_and_constitution(self, tmp_path, monkeypatch):
-        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
-        llm = MockLLM({
-            "module_results": [
-                {"name": "fairness", "score": 90, "rationale": "fair"},
-                {"name": "transparency", "score": 90, "rationale": "clear"},
-                {"name": "ethical-framework", "score": 90, "rationale": "sound"},
-                {"name": "compliance", "score": 90, "rationale": "compliant"},
-            ],
-            "overall_score": 90,
-            "decision": "green",
-            "reasoning": "clean",
-        })
-        ctx = make_ctx(llm=llm)
-        PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        handler('Approve this partnership --context "local business, three quotes" --constitution minimal-safe')
-        # Context and constitution are fed into the evaluation, not a kickoff.
-        assert "local business, three quotes" in llm.last_kwargs["instructions"]
-        assert "Minimal Safe Baseline" in llm.last_kwargs["instructions"]
-        assert ctx.injected is None
-
-    def test_command_brief_flag_returns_worksheet_without_llm(self, tmp_path, monkeypatch):
-        """--brief skips the model call and returns the worksheet (no LLM)."""
-        monkeypatch.setenv("ETHICS_FILTER_AUDIT", str(tmp_path / "audit.jsonl"))
-        llm = MockLLM({})
-        ctx = make_ctx(llm=llm)
-        PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("Should I approve this supplier? --brief")
-        assert "evaluation brief" in out.lower()
-        assert "Score each enabled module" in out
-        assert llm.last_kwargs is None  # no model call for --brief
-        assert ctx.injected is None
-
-    def test_empty_args_returns_usage(self):
+    def test_no_plugin_command_registered(self):
+        """The /ethics command must NOT be registered as a plugin command.
+        The standalone skill at ~/.hermes/skills/ethics-filter/ auto-
+        generates /ethics as a SKILL command (prefix-matching /ethics-filter),
+        which hands off to the agent for VISIBLE reasoning. process_command
+        checks plugin commands before skill commands, so registering /ethics
+        as a plugin command would shadow that path and run hidden compute in
+        the slash worker (the "background script, no output" failure)."""
         ctx = make_ctx()
         PLUGIN.register(ctx)
-        handler = dict((name, h) for name, h, _ in ctx.commands)["ethics"]
-        out = handler("")
-        assert "Usage:" in out
+        names = [name for name, _, _ in ctx.commands]
+        assert "ethics" not in names
+
+    def test_registers_skill_and_tool(self):
+        ctx = make_ctx()
+        PLUGIN.register(ctx)
+        # Tool registered so the agent can call it while reasoning.
+        assert any(t["name"] == "ethics_evaluate" for t in ctx.tools)
+        # Skill registered (namespaced plugin:ethics-filter).
+        assert any(name == "ethics-filter" for name, _ in ctx.skills)
+        # No handler to invoke.
+        assert ctx.commands == []

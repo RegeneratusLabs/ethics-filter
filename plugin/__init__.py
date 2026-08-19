@@ -219,35 +219,17 @@ def register(ctx) -> None:
     # The runtime calls .exists() on the skill path — pass a Path, not a str.
     ctx.register_skill("ethics-filter", SKILL_DIR / "SKILL.md")
 
-    def handle_ethics_command(raw_args: str) -> str:
-        action, context, constitution, auto_score = _parse_command_args(raw_args)
-        if not action:
-            return (
-                "Usage: /ethics <decision> [--context \"background\"] "
-                "[--constitution <preset>] [--brief]\n"
-                "Example: /ethics \"Approve this supplier\" "
-                "--context \"organic farm, 3 quotes\""
-            )
-        # The desktop slash worker (tui_gateway/slash_worker.py) is a persistent
-        # CLI that runs the handler and captures its RETURN VALUE as the chat
-        # bubble. It does NOT drain inject_message's _pending_input, so a
-        # hand-off that returns only {"ok": true} renders an empty/no-op bubble
-        # on the desktop. The health fix: compute the verdict right here and
-        # return it as the command output, so the user sees the answer inline.
-        # auto_score asks the host model to score against the module rubrics —
-        # the same verified path the ethics_evaluate tool uses (fast, scored,
-        # auditable). --brief returns the worksheet instead (no model call).
-        data = _evaluate_to_dict(
-            ctx, action, context, constitution,
-            scores=None, auto_score=auto_score,
-        )
-        return _format_readable(data)
-
-    ctx.register_command(
-        "ethics",
-        handle_ethics_command,
-        description="Evaluate a decision through the Ethics Filter",
-    )
+    # NOTE: we deliberately do NOT register a "/ethics" plugin command. The
+    # standalone skill at ~/.hermes/skills/ethics-filter/ auto-generates a
+    # "/ethics" SKILL command (prefix-matching "/ethics-filter"). Process order
+    # in cli.process_command is: plugin commands FIRST, then skill commands.
+    # A plugin "/ethics" command would SHADOW the skill command and run hidden
+    # compute in the slash worker instead of handing off to the agent for
+    # visible reasoning — which is exactly the "background script, no output"
+    # failure this fixed. Leaving the command unregistered lets /ethics
+    # resolve to the skill command, load the skill into the conversation, and
+    # let the agent reason over it visibly (mirrors soul-finder, which also
+    # has no shadowing plugin command and works out of the box on desktop).
 
     def handle_ethics_tool(params, **kwargs) -> str:
         del kwargs
