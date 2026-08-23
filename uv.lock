@@ -225,7 +225,7 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=1.2.0" },
+    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=1.2.0,<2.0" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=8.0" },
 ]
 provides-extras = ["mcp", "test"]

@@ -185,3 +185,22 @@ class TestEvaluateAggregation:
         # strict needs >= 90 for green; 87.7 is amber
         assert result.decision == "amber"
         assert result.strictness == "strict"
+
+    def test_underscore_key_normalised_to_hyphen(self, audit_path):
+        """Agent-supplied underscore keys must map to canonical hyphen names."""
+        result = evaluate(
+            action="Publish salary bands",
+            context="50-person company",
+            module_scores={
+                "fairness": 90,
+                "transparency": 85,
+                "ethical_framework": 88,  # underscore -> ethical-framework
+            },
+            constitution_name="small-business-ethical",
+            audit=False,
+            audit_path=audit_path,
+        )
+        assert result.decision == "green"
+        names = [m.name for m in result.module_results]
+        assert "ethical-framework" in names
+        assert all("_" not in n for n in names)

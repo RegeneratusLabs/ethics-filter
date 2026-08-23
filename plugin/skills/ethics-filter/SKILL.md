@@ -24,6 +24,29 @@ linked_files:
 
 # Ethics Filter — Universal Ethics Evaluation Engine
 
+## Your Job When This Skill Is Invoked
+
+You have been asked to evaluate a decision through the Ethics Filter. Do the
+evaluation and give the user a clear, reasoned verdict — do not just describe
+the tool.
+
+1. **Restate the decision** in one plain sentence (intent clarification).
+2. **Identify stakeholders** who are affected (direct, indirect, systemic).
+3. **Run the evaluation.** Call the `ethics_evaluate` tool with the decision
+   (set `action` to the decision, pass any `context` you have, and leave
+   `scores` omitted so the filter computes a scored verdict against the module
+   rubrics). If the `ethics_evaluate` tool is unavailable, work through the
+   pipeline below manually and assign a 0-100 score to each relevant module.
+4. **Reason out loud.** For each enabled module, give the score and the
+   reason behind it in your own words — this reasoning is the value, not the
+   number.
+5. **Deliver the verdict**: GREEN (proceed), AMBER (flag for human judgment),
+   or RED (block), with the overall score, the per-module scores, any
+   tensions, and the key reasoning. Flag anything that needs human judgment.
+
+Always answer with the full reasoned evaluation in your reply.
+
+
 ## Overview
 
 A structured decision-evaluation engine that runs any proposed action — corporate, personal, or hybrid — through six independent ethical lenses. Each lens (module) fires only when contextually relevant. The output is a scored, auditable, reasoned evaluation with clear decision thresholds: GREEN (proceed), AMBER (flag for human judgment), RED (block).
