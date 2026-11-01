@@ -21,8 +21,8 @@ import json
 import sys
 from pathlib import Path
 
-from ethics_filter import __version__
-from ethics_filter.engine import (
+from . import __version__
+from .engine import (
     build_evaluation_prompt,
     evaluate,
     list_constitutions,

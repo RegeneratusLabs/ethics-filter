@@ -17,8 +17,8 @@ import json
 import sys
 from typing import Any, Optional
 
-from ethics_filter import engine as engine
-from ethics_filter.engine import MODULE_NAMES
+from . import engine as engine
+from .engine import MODULE_NAMES
 
 
 def create_server():

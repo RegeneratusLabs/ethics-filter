@@ -1,40 +1,32 @@
 """Ethics Filter — Hermes plugin.
 
-Registers three things:
-1. The bundled ``ethics-filter`` skill (loadable as ``plugin:ethics-filter``),
-   with the module rubrics and constitution templates as linked files.
-2. The ``/ethics`` slash command — evaluate a decision and get a readable
-   verdict.
-3. The ``ethics_evaluate`` tool — evaluate a decision and get a scored,
-   auditable verdict. When ``scores`` is omitted, the user's own model is
-   asked to score the decision against the module rubrics, then the engine
-   computes the verdict and writes the audit record.
+Registers two things:
 
-The plugin is self-contained: it vendors the engine under ``plugin/ethics_filter/``
-so it works after ``hermes plugins install`` without a separate pip install.
+1. The bundled ``ethics-filter`` skill (loadable as ``plugin:ethics-filter``),
+   with the module rubrics and constitution templates as linked files. The
+   skill also backs the ``/ethics`` slash command: a skill command hands the
+   evaluation to the agent so the reasoning is visible in the conversation.
+2. The ``ethics_evaluate`` tool — evaluate a decision and get a scored,
+   auditable verdict. When ``scores`` is omitted it returns the evaluation
+   brief for the host agent to score inline; ``auto_score=true`` has the
+   plugin ask the user's own model instead.
+
+The plugin is self-contained: it vendors the engine under
+``ethics_filter/`` next to this file, so it works after
+``hermes plugins install`` with no separate pip install.
 """
 
 from __future__ import annotations
 
 import json
 import re
-import sys
 from pathlib import Path
 
-try:
-    from ethics_filter.engine import (
-        build_evaluation_prompt,
-        evaluate,
-        parse_evaluation_response,
-    )
-except ImportError:
-    # Vendored copy inside the plugin bundle.
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from ethics_filter.engine import (  # noqa: F811
-        build_evaluation_prompt,
-        evaluate,
-        parse_evaluation_response,
-    )
+from .ethics_filter.engine import (
+    build_evaluation_prompt,
+    evaluate,
+    parse_evaluation_response,
+)
 
 SKILL_DIR = Path(__file__).resolve().parent / "skills" / "ethics-filter"
 

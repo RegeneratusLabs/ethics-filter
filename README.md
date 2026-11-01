@@ -47,6 +47,17 @@ cd ethics-filter
 uv sync --all-extras
 ```
 
+### Hermes plugin
+
+```bash
+hermes plugins install RegeneratusLabs/ethics-filter
+hermes plugins enable ethics-filter
+```
+
+That gives you the `ethics_evaluate` tool and the `ethics-filter` skill, which backs `/ethics`. The engine is vendored inside `plugin/`, so there is no separate pip install and nothing to configure.
+
+**What it touches.** Reads the bundled rubrics and constitution templates under `plugin/`. Appends one JSONL record per scored evaluation to `$ETHICS_FILTER_AUDIT` (default `~/.ethics-filter/audit.jsonl`) — that file is the audit trail, and it is never rewritten or deleted. With `auto_score=true` it asks your own model to score through the host agent's existing model connection: no extra key, no other network calls.
+
 ### CLI
 
 ```bash

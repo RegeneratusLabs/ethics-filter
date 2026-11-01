@@ -15,7 +15,7 @@ Public API:
 Zero runtime dependencies. The MCP server and CLI are optional extras.
 """
 
-from ethics_filter.engine import (
+from .engine import (
     Constitution,
     EvaluationResult,
     ModuleResult,
@@ -34,7 +34,7 @@ from ethics_filter.engine import (
     read_audit_log,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 __all__ = [
     "Constitution",
