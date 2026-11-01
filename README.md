@@ -50,9 +50,11 @@ uv sync --all-extras
 ### Hermes plugin
 
 ```bash
-hermes plugins install RegeneratusLabs/ethics-filter
+hermes plugins install RegeneratusLabs/ethics-filter/plugin
 hermes plugins enable ethics-filter
 ```
+
+Note the `/plugin` on the end: the Hermes plugin lives in that subdirectory, and the repo root is the pip package. Installing the bare repo gives you a directory with no manifest.
 
 That gives you the `ethics_evaluate` tool and the `ethics-filter` skill, which backs `/ethics`. The engine is vendored inside `plugin/`, so there is no separate pip install and nothing to configure.
 
