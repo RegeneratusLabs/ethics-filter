@@ -6,12 +6,7 @@ version: "1.1.0"
 author: Regeneratus Labs
 homepage: https://github.com/RegeneratusLabs/ethics-filter
 license: MIT
-description: >
-  Universal ethics evaluation engine. Six modules — environmental, fairness,
-  transparency, conscious leadership, ethical framework, compliance — scored
-  against strictness thresholds, with tension detection and a permanent audit
-  trail. Ships the ethics-filter skill (and its /ethics skill command) plus the
-  ethics_evaluate tool.
+description: "Six-module ethics engine: any decision comes back GREEN, AMBER or RED with the reasoning."
 requires_hermes: ">=0.21.5"
 platforms: [linux, macos, windows]
 tags: [ethics, decision-making, governance, compliance]
